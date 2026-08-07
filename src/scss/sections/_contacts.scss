@@ -1,0 +1,166 @@
+.contacts {
+  position: relative;
+  padding-block: var(--section-space) 137px;
+  overflow: clip;
+  background: var(--color-white);
+
+  &__canvas {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-family: var(--font-contact);
+    font-size: 125px;
+    font-weight: 800;
+    line-height: 55px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__lead {
+    width: 100%;
+    max-width: 620px;
+    margin-top: 50px;
+    color: #873198;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    width: 100%;
+    max-width: 758px;
+    margin-top: 71px;
+  }
+}
+
+.contact-card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 758 / 163;
+  grid-template-columns: 166px minmax(0, 1fr) 52px;
+  align-items: center;
+  padding-right: 31px;
+  color: var(--color-white);
+  isolation: isolate;
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    transition: filter var(--transition);
+  }
+
+  &__icon {
+    justify-self: center;
+    object-fit: contain;
+    pointer-events: none;
+
+    &--map {
+      width: 54px;
+    }
+
+    &--phone {
+      width: 82px;
+      filter: brightness(0) invert(1);
+    }
+
+    &--email {
+      width: 95px;
+      filter: brightness(0) invert(1);
+    }
+
+    &--socials {
+      width: 80px;
+      aspect-ratio: 1;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__label {
+    font-family: var(--font-contact);
+    font-size: 70px;
+    font-weight: 800;
+    line-height: 55px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    position: relative;
+    z-index: 1;
+    width: 52px;
+    max-width: none;
+    transition: filter var(--transition-motion);
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .contact-card__background {
+      filter: brightness(1.09);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgb(114 26 170 / 35%);
+    outline-offset: 5px;
+  }
+}
+
+.site-footer {
+  position: relative;
+  z-index: 4;
+  padding: 86px 100px;
+  background: var(--color-white);
+
+  &__canvas {
+    width: 100%;
+    max-width: 1080px;
+    margin-inline: auto;
+  }
+
+  &__logo {
+    display: block;
+    width: 201px;
+
+    &-image {
+      width: 100%;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 58px;
+    margin-top: 75px;
+    color: var(--color-primary);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 16px;
+    white-space: nowrap;
+
+    a {
+      transition: color var(--transition);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-accent);
+      }
+
+      &:focus-visible {
+        outline: 2px solid currentcolor;
+        outline-offset: 5px;
+      }
+    }
+  }
+}

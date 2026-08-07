@@ -1,0 +1,125 @@
+.benefits {
+  position: relative;
+  grid-area: 3 / 1;
+  padding-block: 86px 109px;
+
+  &__panel {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 37px 29px;
+    border: 3px solid var(--color-white);
+    border-radius: var(--radius-panel);
+    background: linear-gradient(rgb(216 164 249 / 5%), rgb(216 164 249 / 5%)), var(--color-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: clamp(56px, 5.47vw, 70px);
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__title-accent {
+    color: var(--color-accent);
+  }
+
+  &__lead {
+    max-width: 566px;
+    margin-top: 20px;
+    font-size: 26px;
+    line-height: 0.94;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(18px, 2vw, 26px);
+    margin-top: 37px;
+  }
+
+  &__decor {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    overflow: hidden;
+    max-width: none;
+    pointer-events: none;
+
+    &--cross {
+      top: -13px;
+      left: -13px;
+      width: 35px;
+    }
+
+    &--right {
+      top: -23px;
+      right: -80px;
+      width: 171px;
+    }
+
+    &--bottom {
+      bottom: -76px;
+      left: -90px;
+      width: 337px;
+      overflow: visible;
+      transform: rotate(26deg);
+    }
+  }
+
+  &__decor-image {
+    display: block;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.benefit-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px 12px;
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+
+  &__icon {
+    display: block;
+    width: 85px;
+    aspect-ratio: 1;
+    flex: 0 0 85px;
+  }
+
+  &__icon-image {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-top: 12px;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.14;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-top: 9px;
+    font-size: 16px;
+    line-height: 1.28;
+  }
+}

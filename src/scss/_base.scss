@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: var(--page-min-width);
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: var(--page-min-width);
+  color: var(--color-text);
+  background: var(--color-white);
+  font-family: var(--font-base);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.site {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: var(--page-min-width);
+  grid-template-columns: minmax(0, 1fr);
+  overflow-x: clip;
+  background: var(--color-white);
+  isolation: isolate;
+}
+
+main {
+  display: contents;
+}
+
+.site-grid {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      to right,
+      var(--color-grid) 0,
+      var(--color-grid) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--color-grid) 0,
+      var(--color-grid) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    );
+  background-size: var(--grid-size) var(--grid-size);
+  clip-path: inset(var(--grid-line-width) 0 0 var(--grid-line-width));
+  pointer-events: none;
+}
+
+.site-foliage {
+  position: relative;
+  z-index: 1;
+  grid-area: 1 / 1 / 4 / 2;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 180px), transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  pointer-events: none;
+
+  &__image {
+    position: absolute;
+    max-width: none;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+
+    &--left {
+      top: 132px;
+      left: 1000px;
+      width: 1673px;
+      mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+      transform: rotate(102.302deg);
+      transform-origin: left top;
+    }
+
+    &--right {
+      top: 0;
+      right: 0;
+      width: 540px;
+      mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+      transform: rotate(-2.5deg);
+      transform-origin: right top;
+    }
+  }
+}
+
+.layout-gutter {
+  padding-inline: var(--page-gutter);
+}
+
+.container {
+  --container-max-width: var(--container-width);
+
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+
+  &--wide {
+    --container-max-width: var(--content-width);
+  }
+}

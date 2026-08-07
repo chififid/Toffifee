@@ -1,0 +1,117 @@
+.advantages {
+  position: relative;
+  padding-block: var(--section-space) 89px;
+  overflow: clip;
+
+  &__canvas {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    transform: scaleX(0.933);
+  }
+
+  &__lead {
+    width: 100%;
+    max-width: 560px;
+    margin: 23px auto 0;
+    color: var(--color-primary);
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__stars {
+    position: absolute;
+    bottom: -50px;
+    left: calc(50% - 416px);
+    width: 134px;
+    pointer-events: none;
+  }
+
+  &__scratch {
+    position: absolute;
+    right: calc(50% - 412px);
+    bottom: -48px;
+    width: 198px;
+    pointer-events: none;
+  }
+
+  &__grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: 100%;
+    max-width: 906px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 39px 84px;
+    margin: 67px auto 0;
+  }
+}
+
+.advantage-group {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+
+  &__label {
+    margin-right: 35px;
+    padding: 15px 20px 16px;
+    border-radius: 15px;
+    color: var(--color-primary);
+    background: #e9dfef;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  &:nth-child(odd) &__label {
+    margin-right: 0;
+    margin-left: 35px;
+  }
+}
+
+.advantage-card {
+  flex: 1;
+  margin-top: 30px;
+  padding: 28px 38px 24px 40px;
+  border-radius: 20px;
+  color: var(--color-white);
+  background: #a19efb;
+  box-shadow: 4px 4px 9px rgb(0 0 0 / 25%);
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    display: grid;
+    gap: 9px;
+    margin-top: 22px;
+    padding-left: 20px;
+    list-style: disc;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__list li::marker {
+    font-size: 14px;
+  }
+}

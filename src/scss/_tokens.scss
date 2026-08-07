@@ -1,0 +1,39 @@
+:root {
+  --page-max-width: 1280px;
+  --page-min-width: 1280px;
+  --page-gutter: 32px;
+  --content-width: 1200px;
+  --container-width: 1110px;
+  --grid-size: 85px;
+  --section-space: 64px;
+  --color-primary: #721aaa;
+  --color-accent: #8480fc;
+  --color-accent-hover: #7d79f7;
+  --color-button-primary: #8480fc;
+  --color-button-primary-hover: #7975f4;
+  --color-button-secondary: #ece4f1;
+  --color-button-secondary-hover: #e8ddec;
+  --color-text: #111;
+  --color-white: #fff;
+  --color-panel: #f7f4fe;
+  --color-grid: rgb(106 44 145 / 15%);
+  --grid-line-width: 1px;
+  --font-base: geologica, arial, sans-serif;
+  --font-display: 'Impact Local', impact, sans-serif;
+  --font-contact: 'Alumni Sans Local', sans-serif;
+  --radius-button: 12px;
+  --radius-card: 15px;
+  --radius-panel: 20px;
+  --shadow-button: 5px 5px 18px rgb(0 0 0 / 18%);
+  --shadow-button-hover: 5px 5px 18px rgb(0 0 0 / 12%);
+  --shadow-card: 0 0 5px rgb(114 26 170 / 15%);
+  --shadow-panel: 0 1px 9px rgb(114 26 170 / 30%);
+  --transition-button: 280ms ease-in-out;
+  --transition-motion: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: var(--transition-button);
+}
+
+:root.is-grid-zoomed-out {
+  --color-grid: rgb(106 44 145 / 13%);
+  --grid-line-width: 2px;
+}

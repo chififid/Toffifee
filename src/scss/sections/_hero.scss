@@ -1,0 +1,144 @@
+.hero {
+  position: relative;
+  grid-area: 2 / 1;
+
+  &__inner {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding-block: 177px 76px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__heading {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: clamp(56px, 5.47vw, 70px);
+    font-weight: 700;
+    line-height: 0.94;
+    text-align: center;
+  }
+
+  &__star,
+  &__lines,
+  &__arrow {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &__star {
+    &--purple {
+      top: -22px;
+      left: 9.5%;
+      width: 38px;
+    }
+
+    &--blue {
+      top: -21px;
+      left: 16%;
+      width: 60px;
+    }
+  }
+
+  &__lines {
+    right: 8px;
+    bottom: -66px;
+    width: 92px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 63px;
+  }
+
+  &__cta-wrap {
+    position: relative;
+  }
+
+  &__footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 125px;
+    padding-left: 9%;
+  }
+
+  &__students {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__avatars {
+    display: flex;
+  }
+
+  &__avatar {
+    position: relative;
+    width: 58px;
+    aspect-ratio: 1;
+    border: 7px solid var(--color-white);
+    border-radius: 50%;
+    object-fit: cover;
+
+    & + & {
+      margin-left: -9px;
+    }
+
+    &:nth-child(1) {
+      z-index: 3;
+    }
+
+    &:nth-child(2) {
+      z-index: 2;
+    }
+
+    &:nth-child(3) {
+      z-index: 1;
+    }
+  }
+
+  &__students-count {
+    color: var(--color-primary);
+    font-size: 20px;
+    line-height: 1.22;
+  }
+
+  &__arrow {
+    top: calc(100% + 22px);
+    left: calc(50% - 18px);
+    width: 54px;
+  }
+
+  &__ticket {
+    position: absolute;
+    top: calc(100% + 75px);
+    left: calc(50% + 65px);
+    color: #f5feff;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+
+    span {
+      padding-inline: 2px;
+      background: var(--color-primary);
+      box-decoration-break: clone;
+    }
+  }
+}
