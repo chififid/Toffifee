@@ -1,11 +1,85 @@
+@use '../decorative-background';
+
 .reviews {
   --review-card-width: 400px;
   --review-viewport-edge: 80px;
 
   position: relative;
   padding-block: 120px 100px;
-  overflow: clip;
+  overflow: visible;
   background: var(--color-white);
+
+  &__foliage {
+    @include decorative-background.foliage-layer;
+
+    inset: 0;
+  }
+
+  &__foliage-chain {
+    position: absolute;
+    width: 570px;
+    pointer-events: none;
+
+    &--left {
+      top: -405px;
+      left: -260px;
+      width: 650px;
+      height: 1110px;
+    }
+
+    &--right {
+      top: 10px;
+      right: -190px;
+      height: 1040px;
+
+      @include decorative-background.fade-in-mask(to bottom, 8%);
+    }
+  }
+
+  &__foliage-image {
+    @include decorative-background.crop-frame;
+
+    width: 543px;
+    aspect-ratio: 543 / 442;
+
+    @include decorative-background.soft-edge-mask(to right, 10%, 90%);
+
+    img {
+      @include decorative-background.crop-image;
+    }
+
+    &--left-upper {
+      top: 0;
+      left: -20px;
+      width: 620px;
+      transform: rotate(74deg);
+
+      @include decorative-background.soft-edge-mask(to right, 4%, 90%);
+    }
+
+    &--left-lower {
+      top: 448px;
+      left: -18px;
+      width: 620px;
+      transform: rotate(-109deg) scaleY(-1);
+
+      @include decorative-background.fade-in-mask(to right, 10%);
+    }
+
+    &--right-upper {
+      top: -8px;
+      left: 72px;
+      transform: rotate(102deg) scaleY(-1);
+    }
+
+    &--right-lower {
+      top: 414px;
+      left: 52px;
+      transform: rotate(-78deg);
+
+      @include decorative-background.fade-in-mask(to right, 10%);
+    }
+  }
 
   &__canvas {
     position: relative;

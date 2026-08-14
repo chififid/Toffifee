@@ -1,8 +1,183 @@
+@use '../decorative-background';
+
+.faq-contacts-stage {
+  position: relative;
+}
+
+.faq-contacts-foliage {
+  @include decorative-background.foliage-layer;
+
+  inset: 0;
+  overflow: hidden;
+
+  @include decorative-background.inner-edge-mask(to right, 105px, 340px);
+
+  &__segment {
+    position: absolute;
+    left: -420px;
+    width: 700px;
+    overflow: hidden;
+    max-width: none;
+    pointer-events: none;
+
+    img {
+      @include decorative-background.crop-image;
+
+      position: absolute;
+      top: 50%;
+      left: 66%;
+      transform-origin: center;
+    }
+
+    &--upper {
+      top: 12px;
+      left: -555px;
+      width: 895px;
+      height: 550px;
+
+      @include decorative-background.soft-edge-mask(to bottom, 5%, 72%);
+
+      img {
+        left: 460px;
+        width: 565px;
+        transform: translate(-50%, -50%) rotate(78deg);
+      }
+    }
+
+    &--lower {
+      top: 410px;
+      left: -420px;
+      width: 760px;
+      height: 520px;
+
+      @include decorative-background.soft-edge-mask(to bottom, 29%, 75%);
+
+      img {
+        left: 455px;
+        width: 545px;
+        transform: translate(-50%, -50%) rotate(105deg) scaleX(-1);
+      }
+    }
+
+    &--bridge {
+      top: 800px;
+      left: -535px;
+      width: 875px;
+      height: 510px;
+
+      @include decorative-background.soft-edge-mask(to bottom, 26%, 76%);
+
+      img {
+        left: 461px;
+        width: 535px;
+        transform: translate(-50%, -50%) rotate(80deg);
+      }
+    }
+
+    &--turn-in {
+      top: 1180px;
+      left: -500px;
+      width: 840px;
+      height: 500px;
+
+      @include decorative-background.soft-edge-mask(to bottom, 10%, 70%);
+
+      img {
+        left: 460px;
+        width: 380px;
+        height: 309px;
+        transform: translate(-50%, -50%) rotate(82deg);
+      }
+    }
+  }
+}
+
+.faq-footer-foliage {
+  @include decorative-background.foliage-layer;
+
+  inset: 0;
+  overflow: hidden;
+
+  &__chain {
+    position: absolute;
+    bottom: 105px;
+    left: -115px;
+    width: 622px;
+    height: 274px;
+    transform: rotate(32.52deg) scale(1.08);
+    transform-origin: left top;
+
+    @include decorative-background.corner-entry-mask(to right, 96%, 100%, 42%);
+  }
+
+  &__segment {
+    @include decorative-background.crop-image;
+
+    position: absolute;
+    top: 0;
+    width: 337px;
+    height: 274px;
+    transform-origin: center;
+
+    &--approach {
+      left: 0;
+
+      @include decorative-background.fade-out-mask(to right, 85%);
+    }
+
+    &--exit {
+      left: 285px;
+      transform: scaleX(-1);
+
+      @include decorative-background.fade-out-mask(to right, 85%);
+    }
+  }
+}
+
 .faq {
   position: relative;
   padding-block: var(--section-space) 55px;
-  overflow: clip;
+  overflow: visible;
   background: var(--color-white);
+
+  &__foliage {
+    @include decorative-background.foliage-layer;
+
+    &--right {
+      top: -34px;
+      right: -237px;
+      width: 520px;
+      height: 790px;
+    }
+  }
+
+  &__foliage-segment {
+    @include decorative-background.crop-frame;
+
+    width: 543px;
+    height: 442px;
+
+    @include decorative-background.soft-edge-mask(to right, 5%, 94%);
+
+    img {
+      @include decorative-background.crop-image;
+      @include decorative-background.fade-in-mask(to bottom, 14%);
+    }
+
+    &--upper {
+      top: 24px;
+      left: 12px;
+      transform: rotate(89deg) scaleY(-1);
+    }
+
+    &--lower {
+      top: 394px;
+      left: 18px;
+      transform: rotate(-91deg);
+
+      @include decorative-background.soft-edge-mask(to right, 19%, 94%);
+    }
+  }
 
   &__canvas {
     position: relative;

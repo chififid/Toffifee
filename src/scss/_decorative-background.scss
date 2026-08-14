@@ -1,0 +1,107 @@
+@mixin foliage-layer($z-index: 1) {
+  position: absolute;
+  z-index: $z-index;
+  pointer-events: none;
+}
+
+@mixin crop-frame {
+  position: absolute;
+  overflow: hidden;
+  max-width: none;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+@mixin crop-image($opacity: var(--foliage-opacity-default)) {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+
+  @if $opacity {
+    opacity: $opacity;
+  }
+}
+
+@mixin soft-edge-mask($direction: to bottom, $fade-in: 10%, $fade-out: 90%) {
+  mask-image: linear-gradient(
+    $direction,
+    transparent 0,
+    #000 $fade-in,
+    #000 $fade-out,
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+@mixin inner-edge-mask($direction: to right, $solid-end: 120px, $fade-end: 320px) {
+  mask-image: linear-gradient(
+    $direction,
+    #000 0,
+    #000 $solid-end,
+    transparent $fade-end,
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+@mixin corner-entry-mask(
+  $horizontal-direction: to right,
+  $horizontal-solid: 60%,
+  $horizontal-end: 100%,
+  $vertical-in: 10%
+) {
+  mask-image:
+    linear-gradient(
+      $horizontal-direction,
+      #000 0,
+      #000 $horizontal-solid,
+      transparent $horizontal-end,
+      transparent 100%
+    ),
+    linear-gradient(to bottom, transparent 0, #000 $vertical-in, #000 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
+}
+
+@mixin four-edge-mask(
+  $horizontal-in: 8%,
+  $horizontal-out: 92%,
+  $vertical-in: 8%,
+  $vertical-out: 92%
+) {
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      #000 $horizontal-in,
+      #000 $horizontal-out,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 $vertical-in,
+      #000 $vertical-out,
+      transparent 100%
+    );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
+}
+
+@mixin fade-in-mask($direction: to right, $fade-end: 10%) {
+  mask-image: linear-gradient($direction, transparent 0, #000 $fade-end, #000 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+@mixin fade-out-mask($direction: to right, $fade-start: 90%) {
+  mask-image: linear-gradient($direction, #000 0, #000 $fade-start, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}

@@ -1,3 +1,5 @@
+@use '../decorative-background';
+
 .contacts {
   position: relative;
   padding-block: var(--section-space) 137px;
@@ -120,10 +122,31 @@
 .site-footer {
   position: relative;
   z-index: 4;
-  padding: 86px 100px;
+  padding: 77.5px 100px;
   background: var(--color-white);
+  isolation: isolate;
+
+  &__foliage {
+    @include decorative-background.foliage-layer(0);
+
+    inset: -315px 0 0;
+    overflow: hidden;
+  }
+
+  &__fern {
+    @include decorative-background.crop-image(null);
+
+    position: absolute;
+    top: 135px;
+    right: -325px;
+    width: 800px;
+    transform: rotate(-23.21deg);
+    transform-origin: center;
+  }
 
   &__canvas {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 1080px;
     margin-inline: auto;
@@ -142,7 +165,7 @@
     display: flex;
     align-items: center;
     gap: 58px;
-    margin-top: 75px;
+    margin-top: 55px;
     color: var(--color-primary);
     font-size: 32px;
     font-weight: 400;
