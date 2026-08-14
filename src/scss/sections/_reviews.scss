@@ -140,33 +140,6 @@
     }
   }
 
-  &__hatch-stroke {
-    fill: none;
-    stroke: var(--color-white);
-    stroke-width: 12px;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    animation: reviews-hatch-draw 580ms var(--ease-out) both paused;
-
-    &--right {
-      animation-delay: 150ms;
-    }
-
-    &--top {
-      animation-delay: 380ms;
-    }
-
-    &--bottom {
-      animation-delay: 560ms;
-    }
-  }
-
-  &__decor--hatch.is-doodle-visible &__hatch-stroke {
-    animation-play-state: running;
-  }
-
   &__viewport {
     position: relative;
     z-index: 3;
@@ -353,18 +326,5 @@
     .review-card__person span {
       color: rgb(255 255 255 / 70%);
     }
-  }
-}
-
-@keyframes reviews-hatch-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reviews__hatch-stroke {
-    stroke-dashoffset: 0;
-    animation: none;
   }
 }

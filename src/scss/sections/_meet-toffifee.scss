@@ -79,24 +79,8 @@
     right: -49px;
     bottom: -23px;
     display: block;
-    overflow: visible;
     width: 174px;
     max-width: none;
-  }
-
-  &__loop-stroke {
-    fill: none;
-    stroke: var(--color-white);
-    stroke-width: 10px;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    animation: toffifee-loop-draw 1150ms var(--ease-out) 180ms both paused;
-  }
-
-  &__decor-loop.is-doodle-visible &__loop-stroke {
-    animation-play-state: running;
   }
 
   &__slider-stage {
@@ -557,19 +541,8 @@
   }
 }
 
-@keyframes toffifee-loop-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .meet-toffifee__cta-eyes {
-    animation: none;
-  }
-
-  .meet-toffifee__loop-stroke {
-    stroke-dashoffset: 0;
     animation: none;
   }
 }
