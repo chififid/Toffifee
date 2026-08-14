@@ -1,0 +1,229 @@
+html.has-doodle-motion [data-doodle] {
+  --doodle-delay: 0ms;
+
+  opacity: 0;
+  will-change: clip-path, opacity, rotate, scale, translate;
+
+  &.is-doodle-visible {
+    animation-delay: var(--doodle-delay);
+    animation-fill-mode: both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='draw-down'] {
+  clip-path: inset(-10% -20% 100% -20%);
+
+  &.is-doodle-visible {
+    animation: doodle-draw-down 1050ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='draw-diagonal'] {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+
+  &.is-doodle-visible {
+    animation: doodle-draw-diagonal 1000ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='draw-left'] {
+  clip-path: inset(-15% 100% -15% -10%);
+
+  &.is-doodle-visible {
+    animation: doodle-draw-left 1100ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='underline'] {
+  clip-path: inset(-15% 100% -15% -10%);
+
+  &.is-doodle-visible {
+    animation: doodle-scribble-left 950ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='scribble-right'] {
+  clip-path: inset(-15% -10% -15% 100%);
+
+  &.is-doodle-visible {
+    animation: doodle-scribble-right 900ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='twinkle'],
+html.has-doodle-motion [data-doodle='sparkle'] {
+  rotate: -16deg;
+  scale: 0.35;
+
+  &.is-doodle-visible {
+    animation: doodle-twinkle 680ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='mark'] {
+  clip-path: inset(0 0 100%);
+  translate: 0 -8px;
+
+  &.is-doodle-visible {
+    animation: doodle-mark 650ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='heart'] {
+  rotate: -9deg;
+  scale: 0.45;
+
+  &.is-doodle-visible {
+    animation: doodle-heart 760ms var(--ease-out) var(--doodle-delay) both;
+  }
+}
+
+html.has-doodle-motion [data-doodle='hatch'] {
+  opacity: 1;
+  will-change: auto;
+}
+
+html.has-doodle-motion [data-doodle='draw-loop'] {
+  opacity: 1;
+  will-change: auto;
+}
+
+@keyframes doodle-draw-down {
+  0% {
+    clip-path: inset(-10% -20% 100% -20%);
+    opacity: 0;
+    translate: 0 -8px;
+  }
+
+  100% {
+    clip-path: inset(-20%);
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes doodle-draw-diagonal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    opacity: 0;
+    translate: -8px 5px;
+  }
+
+  100% {
+    clip-path: polygon(0 0, 120% 0, 120% 100%, 0 100%);
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes doodle-draw-left {
+  0% {
+    clip-path: inset(-15% 100% -15% -10%);
+    opacity: 0;
+    translate: -10px 0;
+  }
+
+  100% {
+    clip-path: inset(-15% -10%);
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes doodle-scribble-left {
+  0% {
+    clip-path: inset(-15% 100% -15% -10%);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: inset(-15% -10%);
+    opacity: 1;
+  }
+}
+
+@keyframes doodle-scribble-right {
+  0% {
+    clip-path: inset(-15% -10% -15% 100%);
+    opacity: 0;
+  }
+
+  100% {
+    clip-path: inset(-15% -10%);
+    opacity: 1;
+  }
+}
+
+@keyframes doodle-twinkle {
+  0% {
+    opacity: 0;
+    rotate: -16deg;
+    scale: 0.35;
+  }
+
+  65% {
+    opacity: 1;
+    rotate: 5deg;
+    scale: 1.14;
+  }
+
+  100% {
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes doodle-mark {
+  0% {
+    clip-path: inset(0 0 100%);
+    opacity: 0;
+    translate: 0 -8px;
+  }
+
+  100% {
+    clip-path: inset(-10%);
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes doodle-heart {
+  0% {
+    opacity: 0;
+    rotate: -9deg;
+    scale: 0.45;
+  }
+
+  55% {
+    opacity: 1;
+    rotate: 4deg;
+    scale: 1.12;
+  }
+
+  75% {
+    rotate: -2deg;
+    scale: 0.96;
+  }
+
+  100% {
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-doodle] {
+    clip-path: none;
+    opacity: 1;
+    rotate: none;
+    scale: 1;
+    translate: none;
+    animation: none;
+  }
+}

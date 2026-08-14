@@ -1,0 +1,92 @@
+.site-loader {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  background: var(--color-white);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  place-items: center;
+  will-change: opacity;
+  transition:
+    opacity 650ms var(--ease-out),
+    visibility 0s linear 650ms;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    content: '';
+    opacity: 0.55;
+  }
+
+  &__logo {
+    position: relative;
+    width: 280px;
+    overflow: visible;
+  }
+
+  &__letter {
+    --letter-color: var(--color-primary);
+
+    fill: transparent;
+    stroke: var(--letter-color);
+    stroke-width: 0.45px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    paint-order: stroke fill;
+    animation:
+      loader-letter-draw 430ms var(--ease-out) calc(var(--letter-index) * 115ms) forwards,
+      loader-letter-fill 240ms var(--ease-standard) calc(var(--letter-index) * 115ms + 280ms)
+        forwards;
+
+    &--accent {
+      --letter-color: var(--color-accent);
+    }
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+@keyframes loader-letter-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes loader-letter-fill {
+  to {
+    fill: var(--letter-color);
+    stroke: var(--letter-color);
+    stroke-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader {
+    transition-duration: 220ms, 0s;
+    transition-delay: 0s, 220ms;
+
+    &__letter {
+      fill: var(--letter-color);
+      stroke: none;
+      animation: none;
+    }
+  }
+}

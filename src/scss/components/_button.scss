@@ -6,7 +6,7 @@
   padding: 18px 24px 17px;
   border-radius: var(--radius-button);
   box-shadow: var(--shadow-button);
-  font-size: 20px;
+  font-size: var(--type-body-lg);
   font-weight: 600;
   line-height: 1;
   transition:
@@ -20,7 +20,7 @@
   }
 
   &:focus-visible {
-    outline: 3px solid rgb(114 26 170 / 35%);
+    outline: 3px solid var(--color-focus);
     outline-offset: 4px;
   }
 
@@ -43,6 +43,16 @@
     &:focus-visible {
       background-color: var(--color-button-secondary-hover);
     }
+  }
+
+  &--primary:active {
+    background-color: var(--color-accent-hover);
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 14%);
+  }
+
+  &--secondary:active {
+    background-color: #e1d4e7;
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 12%);
   }
 
   &--header {

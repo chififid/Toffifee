@@ -5,8 +5,13 @@
   --content-width: 1200px;
   --container-width: 1110px;
   --grid-size: 85px;
-  --section-space: 64px;
+  --space-stack: 20px;
+  --space-section: 64px;
+  --space-section-relaxed: 80px;
+  --space-section-generous: 100px;
   --color-primary: #721aaa;
+  --color-primary-deep: #6028a4;
+  --color-primary-muted: #6a2c91;
   --color-accent: #8480fc;
   --color-accent-hover: #7d79f7;
   --color-button-primary: #8480fc;
@@ -14,15 +19,27 @@
   --color-button-secondary: #ece4f1;
   --color-button-secondary-hover: #e8ddec;
   --color-text: #111;
+  --color-text-purple: #3a305f;
   --color-white: #fff;
   --color-panel: #f7f4fe;
+  --color-panel-blue: #d9ebf6;
   --color-grid: rgb(106 44 145 / 15%);
+  --color-focus: rgb(114 26 170 / 35%);
   --foliage-opacity-default: 0.31;
   --foliage-opacity-muted: 0.23;
   --grid-line-width: 1px;
   --font-base: geologica, arial, sans-serif;
   --font-display: 'Impact Local', impact, sans-serif;
   --font-contact: 'Alumni Sans Local', sans-serif;
+  --type-display: clamp(56px, 5.47vw, 70px);
+  --type-heading-xl: 70px;
+  --type-heading-lg: 55px;
+  --type-heading-md: 50px;
+  --type-heading-sm: 32px;
+  --type-body-lg: 20px;
+  --type-body-md: 17px;
+  --type-body-sm: 16px;
+  --type-caption: 14px;
   --radius-button: 12px;
   --radius-card: 15px;
   --radius-panel: 20px;
@@ -30,8 +47,13 @@
   --shadow-button-hover: 5px 5px 18px rgb(0 0 0 / 12%);
   --shadow-card: 0 0 5px rgb(114 26 170 / 15%);
   --shadow-panel: 0 1px 9px rgb(114 26 170 / 30%);
-  --transition-button: 280ms ease-in-out;
-  --transition-motion: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 280ms;
+  --duration-slow: 460ms;
+  --ease-standard: ease-in-out;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-button: var(--duration-base) var(--ease-standard);
+  --transition-motion: var(--duration-base) var(--ease-out);
   --transition: var(--transition-button);
 }
 

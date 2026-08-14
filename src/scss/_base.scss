@@ -12,6 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 100px;
+}
+
 body {
   min-width: var(--page-min-width);
   color: var(--color-text);

@@ -1,8 +1,108 @@
-import '../css/reset.css';
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import '../scss/main.scss';
+
+const loader = document.querySelector('[data-site-loader]');
+const loaderStartedAt = performance.now();
+const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let isLoaderHidden = false;
+
+const finishLoading = () => {
+  if (isLoaderHidden) {
+    return;
+  }
+
+  isLoaderHidden = true;
+  document.documentElement.classList.remove('is-loading');
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      loader?.classList.add('is-hidden');
+    });
+  });
+};
+
+const hideLoader = () => {
+  const minimumVisibleTime = reducedMotionPreference.matches ? 300 : 1650;
+  const remainingTime = Math.max(0, minimumVisibleTime - (performance.now() - loaderStartedAt));
+
+  window.setTimeout(finishLoading, remainingTime);
+};
+
+if (document.readyState === 'complete') {
+  hideLoader();
+} else {
+  window.addEventListener('load', hideLoader, { once: true });
+}
+
+window.setTimeout(finishLoading, 2300);
+
+const doodles = [...document.querySelectorAll('[data-doodle]')];
+
+if (doodles.length > 0 && !reducedMotionPreference.matches) {
+  document.documentElement.classList.add('has-doodle-motion');
+
+  let areDoodlesObserved = false;
+
+  const startDoodleObserver = () => {
+    if (areDoodlesObserved) {
+      return;
+    }
+
+    areDoodlesObserved = true;
+
+    if (!('IntersectionObserver' in window)) {
+      doodles.forEach((doodle) => doodle.classList.add('is-doodle-visible'));
+      return;
+    }
+
+    const doodlesByTrigger = new Map();
+
+    doodles.forEach((doodle) => {
+      const trigger = doodle.closest('[data-doodle-trigger]') ?? doodle.parentElement ?? doodle;
+      const triggerDoodles = doodlesByTrigger.get(trigger) ?? [];
+
+      triggerDoodles.push(doodle);
+      doodlesByTrigger.set(trigger, triggerDoodles);
+    });
+
+    const doodleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          doodlesByTrigger
+            .get(entry.target)
+            ?.forEach((doodle) => doodle.classList.add('is-doodle-visible'));
+          doodleObserver.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.2,
+      },
+    );
+
+    doodlesByTrigger.forEach((_, trigger) => doodleObserver.observe(trigger));
+  };
+
+  const handleLoaderTransitionEnd = (event) => {
+    if (event.propertyName !== 'opacity') {
+      return;
+    }
+
+    loader?.removeEventListener('transitionend', handleLoaderTransitionEnd);
+    startDoodleObserver();
+  };
+
+  if (loader && !loader.classList.contains('is-hidden')) {
+    loader.addEventListener('transitionend', handleLoaderTransitionEnd);
+    window.setTimeout(startDoodleObserver, 3200);
+  } else {
+    startDoodleObserver();
+  }
+}
 
 const getGridLineWidth = (zoom) => {
   if (zoom >= 0.8) {

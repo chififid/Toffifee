@@ -4,7 +4,7 @@
   --teacher-card-width: 230px;
 
   position: relative;
-  padding-block: 80px 94px;
+  padding-block: var(--space-section-relaxed) 94px;
 
   &__canvas {
     position: relative;
@@ -24,9 +24,9 @@
   }
 
   &__title {
-    color: #6028a4;
+    color: var(--color-primary-deep);
     font-family: var(--font-display);
-    font-size: 70px;
+    font-size: var(--type-heading-xl);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0.01em;
@@ -48,7 +48,7 @@
     padding-left: 21px;
     border-left: 3px solid var(--color-primary);
     color: var(--color-primary);
-    font-size: 17px;
+    font-size: var(--type-body-md);
     line-height: 1.4;
     letter-spacing: 0.01em;
 
@@ -64,8 +64,8 @@
     padding: 12px 20px 15px 56px;
     border-radius: 25px;
     color: #383838;
-    background: #d9ebf6;
-    font-size: 17px;
+    background: var(--color-panel-blue);
+    font-size: var(--type-body-md);
     line-height: 1.4;
     letter-spacing: 0.01em;
 
@@ -78,8 +78,25 @@
     position: absolute;
     right: -49px;
     bottom: -23px;
+    display: block;
+    overflow: visible;
     width: 174px;
     max-width: none;
+  }
+
+  &__loop-stroke {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 10px;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: toffifee-loop-draw 1150ms var(--ease-out) 180ms both paused;
+  }
+
+  &__decor-loop.is-doodle-visible &__loop-stroke {
+    animation-play-state: running;
   }
 
   &__slider-stage {
@@ -245,6 +262,15 @@
       outline: 2px solid rgb(50 47 85 / 30%);
       outline-offset: -14px;
     }
+
+    &:active {
+      color: #5949e8;
+      opacity: 1;
+
+      &::before {
+        background: rgb(105 89 246 / 16%);
+      }
+    }
   }
 
   &__cta {
@@ -266,7 +292,7 @@
     box-shadow:
       inset 0 0 57px rgb(255 255 255 / 50%),
       var(--shadow-button);
-    font-size: 16px;
+    font-size: var(--type-body-sm);
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.1em;
@@ -306,6 +332,18 @@
       .meet-toffifee__cta-smile {
         top: 5px;
       }
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 4px;
+    }
+
+    &:active {
+      background-color: var(--color-accent-hover);
+      box-shadow:
+        inset 0 0 42px rgb(255 255 255 / 36%),
+        2px 2px 8px rgb(0 0 0 / 14%);
     }
   }
 
@@ -358,7 +396,7 @@
   overflow: hidden;
   border-radius: 18px;
   color: #2f2957;
-  background: #d9ebf6;
+  background: var(--color-panel-blue);
   font-weight: 600;
   text-align: center;
   user-select: none;
@@ -438,7 +476,7 @@
 
   &__name {
     margin-top: 14px;
-    font-size: 17px;
+    font-size: var(--type-body-md);
     line-height: 21px;
     user-select: text;
   }
@@ -486,6 +524,12 @@
       outline: 2px solid rgb(47 41 87 / 35%);
       outline-offset: 2px;
     }
+
+    &:active {
+      color: var(--color-white);
+      background: #211d40;
+      box-shadow: none;
+    }
   }
 }
 
@@ -513,8 +557,19 @@
   }
 }
 
+@keyframes toffifee-loop-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .meet-toffifee__cta-eyes {
+    animation: none;
+  }
+
+  .meet-toffifee__loop-stroke {
+    stroke-dashoffset: 0;
     animation: none;
   }
 }

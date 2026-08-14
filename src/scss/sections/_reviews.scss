@@ -5,7 +5,7 @@
   --review-viewport-edge: 80px;
 
   position: relative;
-  padding-block: 120px 100px;
+  padding-block: 120px var(--space-section-generous);
   overflow: visible;
   background: var(--color-white);
 
@@ -96,18 +96,18 @@
   &__eyebrow {
     padding: 10px 20px;
     border-radius: 8px;
-    color: #6a2c91;
+    color: var(--color-primary-muted);
     background: #ece4f1;
-    font-size: 20px;
+    font-size: var(--type-body-lg);
     font-weight: 500;
     line-height: 1.2;
     white-space: nowrap;
   }
 
   &__title {
-    color: #6a2c91;
+    color: var(--color-primary-muted);
     font-family: var(--font-display);
-    font-size: 55px;
+    font-size: var(--type-heading-lg);
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
@@ -138,6 +138,33 @@
       width: 131px;
       transform: rotate(32deg) skewX(6deg);
     }
+  }
+
+  &__hatch-stroke {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 12px;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: reviews-hatch-draw 580ms var(--ease-out) both paused;
+
+    &--right {
+      animation-delay: 150ms;
+    }
+
+    &--top {
+      animation-delay: 380ms;
+    }
+
+    &--bottom {
+      animation-delay: 560ms;
+    }
+  }
+
+  &__decor--hatch.is-doodle-visible &__hatch-stroke {
+    animation-play-state: running;
   }
 
   &__viewport {
@@ -200,6 +227,11 @@
       box-shadow: var(--shadow-button-hover);
     }
 
+    &:active:not(:disabled) {
+      background-color: var(--color-accent-hover);
+      box-shadow: 2px 2px 8px rgb(0 0 0 / 14%);
+    }
+
     &:disabled {
       color: var(--color-primary);
       background: #f8f4fe;
@@ -208,7 +240,7 @@
     }
 
     &:focus-visible {
-      outline: 3px solid rgb(114 26 170 / 35%);
+      outline: 3px solid var(--color-focus);
       outline-offset: 4px;
     }
   }
@@ -261,7 +293,7 @@
 
   &__quote {
     margin-top: 24px;
-    font-size: 20px;
+    font-size: var(--type-body-lg);
     line-height: 1.4;
   }
 
@@ -287,12 +319,12 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
-    font-size: 16px;
+    font-size: var(--type-body-sm);
     line-height: 1.5;
     white-space: nowrap;
 
     strong {
-      color: #6a2c91;
+      color: var(--color-primary-muted);
       font-weight: 600;
       transition: color 360ms ease;
     }
@@ -321,5 +353,18 @@
     .review-card__person span {
       color: rgb(255 255 255 / 70%);
     }
+  }
+}
+
+@keyframes reviews-hatch-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews__hatch-stroke {
+    stroke-dashoffset: 0;
+    animation: none;
   }
 }

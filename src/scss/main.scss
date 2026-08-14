@@ -1,6 +1,9 @@
+@use 'swiper/css';
 @use 'fonts';
 @use 'tokens';
 @use 'base';
+@use 'doodles';
+@use 'components/loader';
 @use 'components/button';
 @use 'components/header';
 @use 'sections/hero';

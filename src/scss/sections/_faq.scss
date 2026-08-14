@@ -136,7 +136,7 @@
 
 .faq {
   position: relative;
-  padding-block: var(--section-space) 55px;
+  padding-block: var(--space-section) 55px;
   overflow: visible;
   background: var(--color-white);
 
@@ -189,9 +189,9 @@
   }
 
   &__title {
-    color: #6028a4;
+    color: var(--color-primary-deep);
     font-family: var(--font-display);
-    font-size: 70px;
+    font-size: var(--type-heading-xl);
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
@@ -202,7 +202,7 @@
     max-width: 650px;
     margin: 19px auto 0;
     color: #5318a3;
-    font-size: 17px;
+    font-size: var(--type-body-md);
     font-weight: 500;
     line-height: 1.2;
   }
@@ -247,10 +247,28 @@
     padding: 9px 47px 9px 37px;
     border: 0;
     appearance: none;
-    color: #6028a4;
+    color: var(--color-primary-deep);
     background: transparent;
     text-align: left;
     cursor: pointer;
+    transition:
+      background-color var(--transition-button),
+      color var(--transition-button);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-primary);
+      background: rgb(132 128 252 / 7%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -3px;
+    }
+
+    &:active {
+      background: rgb(132 128 252 / 13%);
+    }
   }
 
   &__number {
@@ -261,7 +279,7 @@
     color: var(--color-white);
     background: #6028ad;
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--type-body-sm);
     line-height: 1;
     place-items: center;
   }
@@ -298,7 +316,7 @@
     display: grid;
     grid-template-rows: 0fr;
     color: #5318a3;
-    font-size: 14px;
+    font-size: var(--type-caption);
     line-height: 1.2;
     opacity: 0;
     transform: translateY(-6px);
