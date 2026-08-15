@@ -199,6 +199,10 @@
     grid-column: auto;
     padding-inline: 20px;
 
+    &:last-child {
+      width: 100%;
+    }
+
     &__text {
       max-width: 260px;
     }

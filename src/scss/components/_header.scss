@@ -125,9 +125,10 @@
       position: absolute;
       top: calc(100% + 18px);
       right: 0;
-      left: 0;
+      left: auto;
       display: flex;
       visibility: hidden;
+      width: min(400px, 100%);
       flex-direction: column;
       gap: 12px;
       padding: 16px;

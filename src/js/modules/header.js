@@ -102,6 +102,16 @@ export const initHeader = () => {
       header.classList.remove('is-hidden');
     }
   });
+  header.addEventListener('focusout', (event) => {
+    if (
+      mobileHeaderQuery.matches &&
+      isMenuOpen() &&
+      event.relatedTarget &&
+      !header.contains(event.relatedTarget)
+    ) {
+      setMenuState(false);
+    }
+  });
 
   menuToggle?.addEventListener('click', () => setMenuState(!isMenuOpen()));
   menu?.addEventListener('click', (event) => {
