@@ -1,0 +1,91 @@
+@use '../decorative-background';
+
+.site-foliage {
+  @include decorative-background.foliage-layer;
+
+  inset: -86px 0 auto;
+  width: 100%;
+  height: calc(100% + 892px);
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 180px), transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+
+  &__chain {
+    position: absolute;
+    max-width: none;
+    overflow: hidden;
+    pointer-events: none;
+
+    &--left {
+      top: 132px;
+      left: 1000px;
+      width: 1673px;
+      aspect-ratio: 1152 / 1024;
+      transform: rotate(102.302deg);
+      transform-origin: left top;
+    }
+
+    &--right {
+      top: 0;
+      right: 0;
+      width: 540px;
+      aspect-ratio: 500 / 1546;
+      transform: rotate(-2.5deg);
+      transform-origin: right top;
+    }
+  }
+
+  &__segment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 49.3056%;
+    max-width: none;
+    opacity: var(--foliage-opacity-default);
+    transform-origin: left top;
+
+    &--left-first {
+      transform: matrix(1.015, 0.001, -0.001, 1.014, 16.42, 428.89);
+
+      @include decorative-background.soft-edge-mask(to right, 7%, 96%);
+    }
+
+    &--left-second {
+      transform: matrix(-1.013, 0.001, -0.003, 1.012, 1653.79, 428.88);
+
+      @include decorative-background.soft-edge-mask(to right, 7%, 96%);
+    }
+
+    &--right-upper-first,
+    &--right-upper-second,
+    &--right-lower-first,
+    &--right-lower-second {
+      width: 113.6%;
+    }
+
+    &--right-upper-first {
+      transform: matrix(-0.1138, -0.9491, 0.9472, -0.1126, 279.59, 1082.57);
+
+      @include decorative-background.soft-edge-mask(to right, 70%, 96%);
+    }
+
+    &--right-upper-second {
+      transform: matrix(0.1154, 0.947, 0.9455, -0.1105, 141.99, -55.92);
+
+      @include decorative-background.soft-edge-mask(to right, 7%, 96%);
+    }
+
+    &--right-lower-first {
+      transform: matrix(0.1146, -0.9489, 0.947, 0.1125, 142.47, 1725.51);
+
+      @include decorative-background.soft-edge-mask(to right, 7%, 96%);
+    }
+
+    &--right-lower-second {
+      transform: matrix(-0.1125, 0.9473, 0.9449, 0.1141, 278.83, 587.02);
+
+      @include decorative-background.soft-edge-mask(to right, 70%, 96%);
+    }
+  }
+}

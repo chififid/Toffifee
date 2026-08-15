@@ -1,0 +1,82 @@
+.contact-card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 758 / 163;
+  grid-template-columns: minmax(110px, 166px) minmax(0, 1fr) 52px;
+  align-items: center;
+  padding-right: 31px;
+  color: var(--color-white);
+  isolation: isolate;
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    transition: filter var(--transition);
+  }
+
+  &__icon {
+    justify-self: center;
+    object-fit: contain;
+    pointer-events: none;
+
+    &--map {
+      width: 54px;
+    }
+
+    &--phone {
+      width: 82px;
+      filter: brightness(0) invert(1);
+    }
+
+    &--email {
+      width: 95px;
+      filter: brightness(0) invert(1);
+    }
+
+    &--socials {
+      width: 80px;
+      aspect-ratio: 1;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__label {
+    font-family: var(--font-contact);
+    font-size: var(--type-heading-xl);
+    font-weight: 800;
+    line-height: 55px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    position: relative;
+    z-index: 1;
+    width: 52px;
+    max-width: none;
+    transition: filter var(--transition-motion);
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .contact-card__background {
+      filter: brightness(1.09);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 5px;
+  }
+
+  &:active {
+    .contact-card__background {
+      filter: brightness(0.98) saturate(1.04);
+    }
+  }
+}

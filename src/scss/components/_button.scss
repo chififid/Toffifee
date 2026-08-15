@@ -47,16 +47,16 @@
 
   &--primary:active {
     background-color: var(--color-accent-hover);
-    box-shadow: 2px 2px 8px rgb(0 0 0 / 14%);
+    box-shadow: var(--shadow-button-active);
   }
 
   &--secondary:active {
     background-color: #e1d4e7;
-    box-shadow: 2px 2px 8px rgb(0 0 0 / 12%);
+    box-shadow: var(--shadow-button-secondary-active);
   }
 
   &--header {
-    min-width: 197px;
+    min-width: clamp(170px, 15.3907vw, 197px);
     padding-block: 12px 11px;
     background: var(--color-button-primary);
   }

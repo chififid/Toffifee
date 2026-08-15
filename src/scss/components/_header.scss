@@ -1,7 +1,6 @@
 .site-header-slot {
   position: relative;
   z-index: 20;
-  grid-area: 1 / 1;
   height: 86px;
 }
 
@@ -51,13 +50,13 @@
   &__nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: clamp(12px, 1.9532vw, 25px);
   }
 
   &__link {
     position: relative;
     color: var(--color-primary);
-    font-size: 20px;
+    font-size: clamp(17px, 1.5625vw, 20px);
     transition: color var(--transition);
 
     &::after {

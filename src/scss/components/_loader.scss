@@ -5,9 +5,9 @@
   display: grid;
   overflow: hidden;
   background: var(--color-white);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   place-items: center;
   will-change: opacity;
   transition:
@@ -57,6 +57,12 @@
     visibility: hidden;
     pointer-events: none;
   }
+}
+
+html.is-loading .site-loader:not(.is-hidden) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 html.is-loading,

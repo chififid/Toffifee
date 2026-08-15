@@ -7,6 +7,7 @@
     <title>Toffifee — онлайн-школа английского языка</title>
     <script>
       document.documentElement.classList.add('is-loading');
+      window.setTimeout(() => document.documentElement.classList.remove('is-loading'), 2500);
     </script>
     <link rel="stylesheet" href="/src/css/reset.css" />
     <link rel="stylesheet" href="/src/scss/main.scss" />
@@ -75,7 +76,7 @@
       <div class="site-grid" aria-hidden="true"></div>
 
       <div class="site-header-slot">
-        <header class="site-header layout-gutter">
+        <header class="site-header layout-gutter" data-site-header>
           <div class="container site-header__inner">
             <a class="logo" href="#home" aria-label="Toffifee — на главную">
               <img
@@ -88,11 +89,11 @@
             </a>
 
             <nav class="site-header__nav" aria-label="Основная навигация">
-              <a class="site-header__link" href="#courses">Курсы</a>
-              <a class="site-header__link" href="#teachers">Преподаватели</a>
-              <a class="site-header__link" href="#reviews">Отзывы</a>
-              <a class="site-header__link" href="#prices">Стоимость</a>
-              <a class="site-header__link" href="#faq">FAQ</a>
+              <a class="site-header__link" href="#courses" data-nav-link>Курсы</a>
+              <a class="site-header__link" href="#teachers" data-nav-link>Преподаватели</a>
+              <a class="site-header__link" href="#reviews" data-nav-link>Отзывы</a>
+              <a class="site-header__link" href="#prices" data-nav-link>Стоимость</a>
+              <a class="site-header__link" href="#faq" data-nav-link>FAQ</a>
             </nav>
 
             <a class="button button--header" href="#contact">Купить курс</a>
@@ -473,7 +474,7 @@
           </div>
         </section>
 
-        <section class="meet-toffifee" id="teachers">
+        <section class="meet-toffifee" id="teachers" data-teachers>
           <div class="meet-toffifee__canvas">
             <div class="layout-gutter">
               <header class="meet-toffifee__header" data-doodle-trigger>
@@ -548,7 +549,7 @@
                 </div>
               </div>
 
-              <div class="swiper meet-toffifee__slider">
+              <div class="swiper meet-toffifee__slider" data-teachers-slider>
                 <div class="swiper-wrapper">
                   <div class="swiper-slide meet-toffifee__slide">
                     <article class="teacher-card">
@@ -829,11 +830,13 @@
                 class="meet-toffifee__control meet-toffifee__control--prev"
                 type="button"
                 aria-label="Предыдущие преподаватели"
+                data-teachers-prev
               ></button>
               <button
                 class="meet-toffifee__control meet-toffifee__control--next"
                 type="button"
                 aria-label="Следующие преподаватели"
+                data-teachers-next
               ></button>
             </div>
 
@@ -854,7 +857,7 @@
           </div>
         </section>
 
-        <section class="learning-path layout-gutter" id="levels">
+        <section class="learning-path layout-gutter" id="levels" data-learning-path>
           <div class="learning-path__canvas">
             <header class="learning-path__header" data-doodle-trigger>
               <h2 class="learning-path__title">Сколько времени займет путь к свободному</h2>
@@ -878,28 +881,47 @@
               />
             </header>
 
-            <div class="learning-path__tabs" role="tablist" aria-label="Возраст ученика">
+            <div
+              class="learning-path__tabs"
+              role="tablist"
+              aria-label="Возраст ученика"
+              data-learning-tabs
+            >
               <button
                 class="learning-path__tab is-active"
+                id="learning-tab-children"
                 type="button"
                 role="tab"
                 data-audience="children"
+                data-learning-tab
                 aria-selected="true"
+                aria-controls="learning-levels"
               >
                 Для детей
               </button>
               <button
                 class="learning-path__tab"
+                id="learning-tab-adults"
                 type="button"
                 role="tab"
                 data-audience="adults"
+                data-learning-tab
                 aria-selected="false"
+                aria-controls="learning-levels"
+                tabindex="-1"
               >
                 Для взрослых
               </button>
             </div>
 
-            <div class="learning-path__levels" data-doodle-trigger>
+            <div
+              class="learning-path__levels"
+              id="learning-levels"
+              role="tabpanel"
+              aria-labelledby="learning-tab-children"
+              data-learning-panel
+              data-doodle-trigger
+            >
               <img
                 class="learning-path__decor learning-path__decor--right"
                 src="/src/assets/images/learning-path/decor-right.svg"
@@ -910,6 +932,7 @@
               <button
                 class="level-card level-card--a1"
                 type="button"
+                data-level-card
                 data-level="A1"
                 data-name="НАЧАЛЬНЫЙ"
                 data-hours-children="0–80 ч"
@@ -931,7 +954,7 @@
                     <span class="level-card__level">A1</span>
                     <span class="level-card__name">Начальный</span>
                   </span>
-                  <span class="level-card__hours">0–80 ч</span>
+                  <span class="level-card__hours" data-level-hours>0–80 ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -942,6 +965,7 @@
               <button
                 class="level-card"
                 type="button"
+                data-level-card
                 data-level="A2"
                 data-name="БАЗОВЫЙ"
                 data-hours-children="80–180 ч"
@@ -963,7 +987,7 @@
                     <span class="level-card__level">A2</span>
                     <span class="level-card__name">Базовый</span>
                   </span>
-                  <span class="level-card__hours">80–180 ч</span>
+                  <span class="level-card__hours" data-level-hours>80–180 ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -974,6 +998,7 @@
               <button
                 class="level-card is-selected"
                 type="button"
+                data-level-card
                 data-level="B1"
                 data-name="СРЕДНИЙ"
                 data-hours-children="300–350 ч"
@@ -996,7 +1021,7 @@
                     <span class="level-card__level">B1</span>
                     <span class="level-card__name">Средний</span>
                   </span>
-                  <span class="level-card__hours">300–350 ч</span>
+                  <span class="level-card__hours" data-level-hours>300–350 ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -1007,6 +1032,7 @@
               <button
                 class="level-card"
                 type="button"
+                data-level-card
                 data-level="B2"
                 data-name="ВЫШЕ СРЕДНЕГО"
                 data-hours-children="350–550 ч"
@@ -1028,7 +1054,7 @@
                     <span class="level-card__level">B2</span>
                     <span class="level-card__name">Выше среднего</span>
                   </span>
-                  <span class="level-card__hours">350–550 ч</span>
+                  <span class="level-card__hours" data-level-hours>350–550 ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -1039,6 +1065,7 @@
               <button
                 class="level-card"
                 type="button"
+                data-level-card
                 data-level="C1"
                 data-name="ПРОДВИНУТЫЙ"
                 data-hours-children="550–750 ч"
@@ -1060,7 +1087,7 @@
                     <span class="level-card__level">C1</span>
                     <span class="level-card__name">Продвинутый</span>
                   </span>
-                  <span class="level-card__hours">550–750 ч</span>
+                  <span class="level-card__hours" data-level-hours>550–750 ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -1071,6 +1098,7 @@
               <button
                 class="level-card"
                 type="button"
+                data-level-card
                 data-level="C2"
                 data-name="СВОБОДНОЕ ВЛАДЕНИЕ"
                 data-hours-children="750+ ч"
@@ -1092,7 +1120,7 @@
                     <span class="level-card__level">C2</span>
                     <span class="level-card__name">Свободное владение</span>
                   </span>
-                  <span class="level-card__hours">750+ ч</span>
+                  <span class="level-card__hours" data-level-hours>750+ ч</span>
                 </span>
                 <span class="level-card__badge">
                   <img src="/src/assets/images/learning-path/badge-star.svg" alt="" />
@@ -1109,8 +1137,10 @@
                 aria-hidden="true"
               />
               <div class="learning-path__detail-copy">
-                <h3 class="learning-path__detail-title">B1 — СРЕДНИЙ УРОВЕНЬ</h3>
-                <p class="learning-path__detail-text">
+                <h3 class="learning-path__detail-title" data-learning-detail-title>
+                  B1 — СРЕДНИЙ УРОВЕНЬ
+                </h3>
+                <p class="learning-path__detail-text" data-learning-detail-text>
                   Ребёнок уже уверенно общается на знакомые темы, понимает основную мысль текстов и
                   использует английский в повседневных ситуациях.
                 </p>
@@ -1129,7 +1159,7 @@
           </div>
         </section>
 
-        <section class="reviews" id="reviews">
+        <section class="reviews" id="reviews" data-reviews>
           <div class="reviews__foliage" aria-hidden="true">
             <div class="reviews__foliage-chain reviews__foliage-chain--left">
               <div class="reviews__foliage-image reviews__foliage-image--left-upper">
@@ -1198,7 +1228,7 @@
           </div>
 
           <div class="reviews__viewport">
-            <div class="reviews__slider swiper">
+            <div class="reviews__slider swiper" data-reviews-slider>
               <div class="swiper-wrapper">
                 <article class="review-card review-card--accent swiper-slide">
                   <img
@@ -1507,16 +1537,18 @@
               class="reviews__control reviews__control--prev"
               type="button"
               aria-label="Предыдущий отзыв"
+              data-reviews-prev
             ></button>
             <button
               class="reviews__control reviews__control--next"
               type="button"
               aria-label="Следующий отзыв"
+              data-reviews-next
             ></button>
           </div>
         </section>
 
-        <section class="course-options layout-gutter" id="prices">
+        <section class="course-options layout-gutter" id="prices" data-course-options>
           <div class="container container--wide course-options__canvas">
             <header class="course-options__header" data-doodle-trigger>
               <img
@@ -1546,16 +1578,21 @@
               </p>
             </header>
 
-            <div class="course-options__tabs" role="tablist" aria-label="Возрастная группа">
+            <div class="course-options__tabs" role="group" aria-label="Возрастная группа">
               <button
                 class="course-options__tab is-active"
                 type="button"
-                role="tab"
-                aria-selected="true"
+                aria-pressed="true"
+                data-course-tab
               >
                 Для детей
               </button>
-              <button class="course-options__tab" type="button" role="tab" aria-selected="false">
+              <button
+                class="course-options__tab"
+                type="button"
+                aria-pressed="false"
+                data-course-tab
+              >
                 Для взрослых
               </button>
             </div>
@@ -1663,7 +1700,7 @@
               />
             </div>
           </div>
-          <section class="faq layout-gutter" id="faq">
+          <section class="faq layout-gutter" id="faq" data-faq>
             <div class="faq__foliage faq__foliage--right" aria-hidden="true">
               <div class="faq__foliage-segment faq__foliage-segment--upper">
                 <img
@@ -1692,12 +1729,13 @@
               </header>
 
               <div class="faq__list">
-                <article class="faq__item">
+                <article class="faq__item" data-faq-item>
                   <button
                     class="faq__question"
                     type="button"
                     aria-expanded="false"
                     aria-controls="faq-answer-1"
+                    data-faq-question
                   >
                     <span class="faq__number">1</span>
                     <span class="faq__question-text"
@@ -1715,12 +1753,13 @@
                   </div>
                 </article>
 
-                <article class="faq__item">
+                <article class="faq__item" data-faq-item>
                   <button
                     class="faq__question"
                     type="button"
                     aria-expanded="false"
                     aria-controls="faq-answer-2"
+                    data-faq-question
                   >
                     <span class="faq__number">2</span>
                     <span class="faq__question-text">Как определяется уровень?</span>
@@ -1736,12 +1775,13 @@
                   </div>
                 </article>
 
-                <article class="faq__item">
+                <article class="faq__item" data-faq-item>
                   <button
                     class="faq__question"
                     type="button"
                     aria-expanded="false"
                     aria-controls="faq-answer-3"
+                    data-faq-question
                   >
                     <span class="faq__number">3</span>
                     <span class="faq__question-text">Можно ли заниматься индивидуально?</span>
@@ -1757,12 +1797,13 @@
                   </div>
                 </article>
 
-                <article class="faq__item">
+                <article class="faq__item" data-faq-item>
                   <button
                     class="faq__question"
                     type="button"
                     aria-expanded="false"
                     aria-controls="faq-answer-4"
+                    data-faq-question
                   >
                     <span class="faq__number">4</span>
                     <span class="faq__question-text">Что делать, если пропустил занятие?</span>
@@ -1778,12 +1819,13 @@
                   </div>
                 </article>
 
-                <article class="faq__item is-open">
+                <article class="faq__item is-open" data-faq-item>
                   <button
                     class="faq__question"
                     type="button"
                     aria-expanded="true"
                     aria-controls="faq-answer-5"
+                    data-faq-question
                   >
                     <span class="faq__number">5</span>
                     <span class="faq__question-text">Как проходят занятия?</span>

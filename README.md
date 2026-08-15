@@ -15,3 +15,9 @@ npm run preview  # просмотр сборки
 npm run check    # линтеры, форматирование и сборка
 npm run fix      # исправление стилей и форматирования
 ```
+
+## Документация
+
+- [Правила разработки](AGENTS.md)
+- [Декоративные растровые фоны](docs/decorative-backgrounds.md)
+- [Известные продуктовые заглушки](docs/known-placeholders.md)

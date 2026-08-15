@@ -1,6 +1,5 @@
 .hero {
   position: relative;
-  grid-area: 2 / 1;
 
   &__inner {
     position: relative;
@@ -81,7 +80,7 @@
     }
   }
 
-  .site-loader.is-hidden + .site &__draw-stroke {
+  html:not(.is-loading) &__draw-stroke {
     animation-play-state: running;
   }
 

@@ -135,6 +135,8 @@
 }
 
 .faq {
+  --faq-copy-color: #5318a3;
+
   position: relative;
   padding-block: var(--space-section-edge);
   overflow: visible;
@@ -195,13 +197,12 @@
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
-    white-space: nowrap;
   }
 
   &__lead {
     max-width: 650px;
     margin: 19px auto 0;
-    color: #5318a3;
+    color: var(--faq-copy-color);
     font-size: var(--type-body-md);
     font-weight: 500;
     line-height: 1.2;
@@ -315,7 +316,7 @@
   &__answer {
     display: grid;
     grid-template-rows: 0fr;
-    color: #5318a3;
+    color: var(--faq-copy-color);
     font-size: var(--type-caption);
     line-height: 1.2;
     opacity: 0;

@@ -1,11 +1,9 @@
 :root {
   --page-max-width: 1280px;
-  --page-min-width: 1280px;
-  --page-gutter: 32px;
+  --page-gutter: clamp(20px, 2.5vw, 32px);
   --content-width: 1200px;
   --container-width: 1110px;
   --grid-size: 85px;
-  --space-stack: 20px;
   --space-section-edge: 80px;
   --space-section-edge-relaxed: 120px;
   --color-primary: #721aaa;
@@ -19,6 +17,8 @@
   --color-button-secondary-hover: #e8ddec;
   --color-text: #111;
   --color-text-purple: #3a305f;
+  --color-ink-purple: #2f2957;
+  --color-control-purple: #6959f6;
   --color-white: #fff;
   --color-panel: #f7f4fe;
   --color-panel-blue: #d9ebf6;
@@ -31,9 +31,10 @@
   --font-display: 'Impact Local', impact, sans-serif;
   --font-contact: 'Alumni Sans Local', sans-serif;
   --type-display: clamp(56px, 5.47vw, 70px);
-  --type-heading-xl: 70px;
-  --type-heading-lg: 55px;
-  --type-heading-md: 50px;
+  --type-heading-xl: clamp(54px, 5.4688vw, 70px);
+  --type-heading-lg: clamp(44px, 4.2969vw, 55px);
+  --type-heading-md: clamp(40px, 3.9063vw, 50px);
+  --type-contact: clamp(88px, 9.7657vw, 125px);
   --type-heading-sm: 32px;
   --type-body-lg: 20px;
   --type-body-md: 17px;
@@ -46,9 +47,9 @@
   --shadow-button-hover: 5px 5px 18px rgb(0 0 0 / 12%);
   --shadow-card: 0 0 5px rgb(114 26 170 / 15%);
   --shadow-panel: 0 1px 9px rgb(114 26 170 / 30%);
-  --duration-fast: 180ms;
+  --shadow-button-active: 2px 2px 8px rgb(0 0 0 / 14%);
+  --shadow-button-secondary-active: 2px 2px 8px rgb(0 0 0 / 12%);
   --duration-base: 280ms;
-  --duration-slow: 460ms;
   --ease-standard: ease-in-out;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --transition-button: var(--duration-base) var(--ease-standard);
