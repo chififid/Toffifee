@@ -19,8 +19,8 @@ export const initReviewsSlider = () => {
     modules: [Navigation],
     slidesPerView: 'auto',
     slidesPerGroup: 1,
-    spaceBetween: 32,
-    slidesOffsetAfter: 440,
+    spaceBetween: 16,
+    slidesOffsetAfter: 24,
     speed: 520,
     grabCursor: true,
     simulateTouch: true,
@@ -28,6 +28,16 @@ export const initReviewsSlider = () => {
     preventClicks: false,
     preventClicksPropagation: false,
     watchOverflow: true,
+    breakpoints: {
+      700: {
+        spaceBetween: 24,
+        slidesOffsetAfter: 80,
+      },
+      1100: {
+        spaceBetween: 32,
+        slidesOffsetAfter: 440,
+      },
+    },
     navigation: {
       prevEl: root.querySelector('[data-reviews-prev]'),
       nextEl: root.querySelector('[data-reviews-next]'),

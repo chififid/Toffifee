@@ -89,3 +89,39 @@
     }
   }
 }
+
+@media (width <= 900px) {
+  .hero-foliage {
+    &__chain--left {
+      top: 190px;
+      left: 72%;
+      width: 1320px;
+    }
+
+    &__chain--right {
+      right: -95px;
+      width: 430px;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .hero-foliage {
+    height: calc(100% + 540px);
+
+    &__chain--left {
+      top: 250px;
+      left: 48%;
+      width: 1000px;
+    }
+
+    &__chain--right {
+      right: -140px;
+      width: 350px;
+    }
+
+    &__segment {
+      opacity: var(--foliage-opacity-muted);
+    }
+  }
+}

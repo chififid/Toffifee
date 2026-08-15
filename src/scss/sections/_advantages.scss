@@ -115,3 +115,58 @@
     font-size: var(--type-caption);
   }
 }
+
+@media (width <= 900px) {
+  .advantages {
+    &__title {
+      transform: none;
+    }
+
+    &__grid {
+      gap: 32px;
+      margin-top: 58px;
+    }
+
+    &__stars {
+      display: none;
+    }
+
+    &__scratch {
+      display: none;
+    }
+  }
+
+  .advantage-group {
+    &__label,
+    &:nth-child(odd) &__label {
+      margin-inline: 12px;
+    }
+  }
+
+  .advantage-card {
+    padding-inline: 28px;
+  }
+}
+
+@media (width <= 700px) {
+  .advantages {
+    &__grid {
+      max-width: 520px;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 50px;
+    }
+  }
+
+  .advantage-group {
+    &__label,
+    &:nth-child(odd) &__label {
+      margin-inline: 0;
+    }
+  }
+
+  .advantage-card {
+    margin-top: 16px;
+    padding: 25px 24px;
+  }
+}

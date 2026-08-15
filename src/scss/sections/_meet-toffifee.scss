@@ -393,6 +393,91 @@
   }
 }
 
+@media (width <= 900px) {
+  .meet-toffifee {
+    &__title-stroke {
+      right: 0;
+      width: min(36vw, 270px);
+    }
+
+    &__note {
+      padding-left: 24px;
+    }
+
+    &__foliage--left {
+      left: -150px;
+    }
+
+    &__foliage--right {
+      right: -220px;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .meet-toffifee {
+    --teacher-card-width: min(230px, calc(100vw - 72px));
+
+    &__title {
+      line-height: 1.04;
+    }
+
+    &__title-stroke {
+      top: auto;
+      right: -6px;
+      bottom: -10px;
+      width: 42vw;
+    }
+
+    &__description {
+      margin-top: 20px;
+      padding-left: 14px;
+    }
+
+    &__note {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 18px;
+    }
+
+    &__decor-loop {
+      right: -18px;
+      bottom: -54px;
+      width: 120px;
+    }
+
+    &__slider-stage {
+      margin-top: 38px;
+    }
+
+    &__foliage {
+      opacity: 0.62;
+
+      &--left {
+        left: -185px;
+        width: 360px;
+      }
+
+      &--right {
+        right: -210px;
+        width: 350px;
+      }
+    }
+
+    &__control {
+      width: 62px;
+    }
+
+    &__cta {
+      width: calc(100% - 40px);
+      gap: 12px;
+      padding: 20px 14px;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .meet-toffifee__cta-eyes {
     animation: none;

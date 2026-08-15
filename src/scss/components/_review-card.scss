@@ -104,3 +104,39 @@
     }
   }
 }
+
+@media (width <= 600px) {
+  .review-card {
+    min-height: 315px;
+    padding: 26px 20px 28px 24px;
+
+    &__shape--default {
+      top: -20px;
+      left: -28px;
+      width: calc(100% + 56px);
+    }
+
+    &__rating img {
+      width: 21px;
+    }
+
+    &__quote {
+      margin-top: 18px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    &__author {
+      gap: 12px;
+    }
+
+    &__avatar {
+      width: 44px;
+    }
+
+    &__person {
+      font-size: 14px;
+      white-space: normal;
+    }
+  }
+}

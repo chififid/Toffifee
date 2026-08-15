@@ -195,6 +195,104 @@
   }
 }
 
+@media (width <= 900px) {
+  .hero {
+    &__inner {
+      padding-top: 120px;
+    }
+
+    &__footer {
+      margin-top: 90px;
+      padding-left: 4%;
+    }
+
+    &__lines {
+      right: 2%;
+      bottom: -54px;
+      width: 76px;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .hero {
+    &__inner {
+      padding-top: 96px;
+    }
+
+    &__title {
+      line-height: 0.98;
+    }
+
+    &__star--purple {
+      top: -20px;
+      left: 2%;
+      width: 30px;
+    }
+
+    &__star--blue {
+      top: -18px;
+      left: 11%;
+      width: 45px;
+    }
+
+    &__lines {
+      right: -4px;
+      bottom: -45px;
+      width: 58px;
+    }
+
+    &__actions {
+      width: 100%;
+      max-width: 360px;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 45px;
+    }
+
+    &__cta-wrap,
+    &__actions .button {
+      width: 100%;
+    }
+
+    &__actions .button {
+      min-width: 0;
+    }
+
+    &__footer {
+      flex-direction: column;
+      margin-top: 72px;
+      padding-left: 0;
+    }
+
+    &__students {
+      gap: 12px;
+    }
+
+    &__avatar {
+      width: 50px;
+      border-width: 5px;
+    }
+
+    &__students-count {
+      font-size: 17px;
+    }
+
+    &__arrow {
+      display: none;
+    }
+
+    &__ticket {
+      position: static;
+      max-width: 260px;
+      margin-top: 30px;
+      font-size: 16px;
+      text-align: center;
+      white-space: normal;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__draw-stroke {
     stroke-dashoffset: 0;

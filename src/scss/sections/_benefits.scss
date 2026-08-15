@@ -122,3 +122,85 @@
     line-height: 1.28;
   }
 }
+
+@media (width <= 1000px) {
+  .benefits__list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .benefit-card {
+    grid-column: span 2;
+
+    &:nth-last-child(2) {
+      grid-column: 2 / span 2;
+    }
+  }
+}
+
+@media (width <= 700px) {
+  .benefits {
+    &__panel {
+      padding: 32px 24px;
+    }
+
+    &__lead {
+      font-size: 21px;
+      line-height: 1.1;
+    }
+
+    &__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__decor--right {
+      top: -10px;
+      right: -58px;
+      width: 135px;
+    }
+  }
+
+  .benefit-card {
+    grid-column: auto;
+
+    &:nth-last-child(2) {
+      grid-column: auto;
+    }
+
+    &:last-child {
+      width: calc(50% - 9px);
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+  }
+}
+
+@media (width <= 480px) {
+  .benefits {
+    &__panel {
+      padding: 28px 18px;
+    }
+
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    &__decor--bottom {
+      bottom: -48px;
+      left: -55px;
+      width: 230px;
+    }
+  }
+
+  .benefit-card {
+    width: 100%;
+    min-height: 194px;
+    grid-column: auto;
+    padding-inline: 20px;
+
+    &__text {
+      max-width: 260px;
+    }
+  }
+}

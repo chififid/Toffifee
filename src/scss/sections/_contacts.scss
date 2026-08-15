@@ -39,3 +39,21 @@
     margin-top: 71px;
   }
 }
+
+@media (width <= 700px) {
+  .contacts {
+    &__title {
+      line-height: 0.9;
+      white-space: normal;
+    }
+
+    &__lead {
+      margin-top: 28px;
+      line-height: 1.35;
+    }
+
+    &__list {
+      margin-top: 42px;
+    }
+  }
+}

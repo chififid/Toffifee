@@ -218,3 +218,82 @@
     }
   }
 }
+
+@media (width <= 900px) {
+  .reviews {
+    --review-card-width: min(400px, calc(100vw - 64px));
+    --review-viewport-edge: 32px;
+
+    &__foliage-chain--left {
+      left: -390px;
+    }
+
+    &__foliage-chain--right {
+      right: -350px;
+    }
+
+    &__decor--arrow {
+      left: 5%;
+    }
+
+    &__decor--heart {
+      right: 7%;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .reviews {
+    --review-card-width: calc(100vw - 48px);
+    --review-viewport-edge: 24px;
+
+    &__header {
+      gap: 18px;
+      padding-inline: var(--page-gutter);
+      text-align: center;
+    }
+
+    &__eyebrow {
+      padding-inline: 16px;
+      white-space: normal;
+    }
+
+    &__foliage {
+      opacity: 0.48;
+    }
+
+    &__foliage-chain--left {
+      left: -480px;
+    }
+
+    &__foliage-chain--right {
+      right: -440px;
+    }
+
+    &__decor--arrow {
+      top: -50px;
+      left: 2%;
+      width: 62px;
+    }
+
+    &__decor--heart {
+      top: -48px;
+      right: 3%;
+      width: 66px;
+    }
+
+    &__decor--hatch {
+      display: none;
+    }
+
+    &__viewport {
+      margin-top: 18px;
+      padding-block: 24px 40px;
+    }
+
+    &__control {
+      width: 52px;
+      border-radius: 12px;
+    }
+  }
+}

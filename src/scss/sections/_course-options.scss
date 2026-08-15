@@ -137,3 +137,70 @@
     }
   }
 }
+
+@media (width <= 900px) {
+  .course-options {
+    &__title {
+      text-align: center;
+      white-space: normal;
+    }
+
+    &__tabs {
+      margin-top: 64px;
+    }
+
+    &__decor--arrow {
+      top: 135px;
+      right: -30px;
+      width: 270px;
+    }
+  }
+}
+
+@media (width <= 800px) {
+  .course-options {
+    &__cards {
+      max-width: var(--course-card-width);
+      grid-template-columns: 1fr;
+      gap: 34px;
+      margin-top: 18px;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .course-options {
+    &__lead {
+      margin-top: 16px;
+    }
+
+    &__tabs {
+      width: 100%;
+      gap: 12px;
+      margin-top: 50px;
+    }
+
+    &__tab {
+      width: auto;
+      min-width: 0;
+      flex: 1;
+      padding-inline: 8px;
+    }
+
+    &__decor--heart {
+      top: -18px;
+      left: -22px;
+      width: 65px;
+    }
+
+    &__decor--heart-detail {
+      top: -24px;
+      left: 20px;
+      width: 35px;
+    }
+
+    &__decor--arrow {
+      display: none;
+    }
+  }
+}

@@ -8,6 +8,9 @@ export const initHeader = () => {
     return;
   }
 
+  const menu = header.querySelector('[data-header-menu]');
+  const menuToggle = header.querySelector('[data-header-toggle]');
+  const mobileHeaderQuery = window.matchMedia('(max-width: 900px)');
   const navigationLinks = [...header.querySelectorAll('[data-nav-link][href^="#"]')];
   const navigationSections = navigationLinks
     .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
@@ -15,6 +18,20 @@ export const initHeader = () => {
   let lastScrollPosition = window.scrollY;
   let isHeaderActivated = false;
   let isScrollUpdateQueued = false;
+
+  const isMenuOpen = () => header.classList.contains('is-menu-open');
+
+  const setMenuState = (isOpen, { returnFocus = false } = {}) => {
+    header.classList.toggle('is-menu-open', isOpen);
+    menuToggle?.setAttribute('aria-expanded', String(isOpen));
+    menuToggle?.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+
+    if (isOpen) {
+      header.classList.remove('is-hidden');
+    } else if (returnFocus) {
+      menuToggle?.focus();
+    }
+  };
 
   const updateActiveNavigation = (currentScrollPosition) => {
     const sectionMarker = currentScrollPosition + header.offsetHeight + 24;
@@ -38,7 +55,8 @@ export const initHeader = () => {
   const activateHeader = (currentScrollPosition) => {
     isHeaderActivated = true;
     lastScrollPosition = currentScrollPosition;
-    header.classList.add('is-fixed', 'is-scrolled', 'is-hidden', 'is-activating');
+    header.classList.add('is-fixed', 'is-scrolled', 'is-activating');
+    header.classList.toggle('is-hidden', !isMenuOpen());
     window.requestAnimationFrame(() => header.classList.remove('is-activating'));
   };
 
@@ -59,7 +77,7 @@ export const initHeader = () => {
     } else if (!isHeaderActivated && currentScrollPosition >= ACTIVATION_OFFSET) {
       activateHeader(currentScrollPosition);
     } else if (isHeaderActivated && Math.abs(scrollDelta) >= DIRECTION_THRESHOLD) {
-      header.classList.toggle('is-hidden', scrollDelta > 0);
+      header.classList.toggle('is-hidden', scrollDelta > 0 && !isMenuOpen());
       lastScrollPosition = currentScrollPosition;
     } else if (!isHeaderActivated) {
       lastScrollPosition = currentScrollPosition;
@@ -82,6 +100,28 @@ export const initHeader = () => {
   header.addEventListener('focusin', () => {
     if (isHeaderActivated) {
       header.classList.remove('is-hidden');
+    }
+  });
+
+  menuToggle?.addEventListener('click', () => setMenuState(!isMenuOpen()));
+  menu?.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      setMenuState(false);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (mobileHeaderQuery.matches && isMenuOpen() && !header.contains(event.target)) {
+      setMenuState(false);
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isMenuOpen()) {
+      setMenuState(false, { returnFocus: true });
+    }
+  });
+  mobileHeaderQuery.addEventListener('change', ({ matches }) => {
+    if (!matches) {
+      setMenuState(false);
     }
   });
   window.addEventListener('resize', () => updateActiveNavigation(Math.max(window.scrollY, 0)), {

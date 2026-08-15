@@ -88,15 +88,28 @@
               />
             </a>
 
-            <nav class="site-header__nav" aria-label="Основная навигация">
-              <a class="site-header__link" href="#courses" data-nav-link>Курсы</a>
-              <a class="site-header__link" href="#teachers" data-nav-link>Преподаватели</a>
-              <a class="site-header__link" href="#reviews" data-nav-link>Отзывы</a>
-              <a class="site-header__link" href="#prices" data-nav-link>Стоимость</a>
-              <a class="site-header__link" href="#faq" data-nav-link>FAQ</a>
-            </nav>
+            <div class="site-header__menu" id="site-header-menu" data-header-menu>
+              <nav class="site-header__nav" aria-label="Основная навигация">
+                <a class="site-header__link" href="#courses" data-nav-link>Курсы</a>
+                <a class="site-header__link" href="#teachers" data-nav-link>Преподаватели</a>
+                <a class="site-header__link" href="#reviews" data-nav-link>Отзывы</a>
+                <a class="site-header__link" href="#prices" data-nav-link>Стоимость</a>
+                <a class="site-header__link" href="#faq" data-nav-link>FAQ</a>
+              </nav>
 
-            <a class="button button--header" href="#contact">Купить курс</a>
+              <a class="button button--header" href="#contact">Купить курс</a>
+            </div>
+
+            <button
+              class="site-header__burger"
+              type="button"
+              aria-label="Открыть меню"
+              aria-expanded="false"
+              aria-controls="site-header-menu"
+              data-header-toggle
+            >
+              <span class="site-header__burger-line" aria-hidden="true"></span>
+            </button>
           </div>
         </header>
       </div>
