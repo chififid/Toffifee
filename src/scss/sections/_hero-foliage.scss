@@ -1,6 +1,6 @@
 @use '../decorative-background';
 
-.site-foliage {
+.hero-foliage {
   @include decorative-background.foliage-layer;
 
   inset: -86px 0 auto;

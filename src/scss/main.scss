@@ -6,7 +6,6 @@
 @use 'components/loader';
 @use 'components/button';
 @use 'components/header';
-@use 'components/site-foliage';
 @use 'components/teacher-card';
 @use 'components/review-card';
 @use 'components/course-card';
@@ -14,6 +13,7 @@
 @use 'components/footer';
 @use 'components/level-card';
 @use 'sections/hero';
+@use 'sections/hero-foliage';
 @use 'sections/benefits';
 @use 'sections/advantages';
 @use 'sections/meet-toffifee';
