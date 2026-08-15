@@ -1,7 +1,7 @@
 .benefits {
   position: relative;
   grid-area: 3 / 1;
-  padding-block: 86px 109px;
+  padding-block: var(--space-section-edge);
 
   &__panel {
     position: relative;

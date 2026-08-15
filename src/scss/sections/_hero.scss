@@ -7,7 +7,7 @@
     z-index: 3;
     display: flex;
     flex-direction: column;
-    padding-block: 177px 76px;
+    padding-block: 177px var(--space-section-edge);
   }
 
   &__content {
