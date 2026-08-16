@@ -27,9 +27,10 @@
 
     &--default {
       z-index: -2;
-      top: -30px;
-      left: -40px;
-      width: calc(100% + 80px);
+      top: -8.93%;
+      left: -10%;
+      width: 120%;
+      height: 123.81%;
     }
   }
 
@@ -107,33 +108,17 @@
 
 @media (width <= 600px) {
   .review-card {
-    min-height: 315px;
-    padding: 26px 20px 28px 24px;
-
-    &__shape--active {
-      height: 100%;
-    }
-
-    &__shape--default {
-      top: -20px;
-      left: -28px;
-      width: calc(100% + 56px);
-      height: calc(100% + 40px);
-    }
-
-    &__shape--active,
-    &__shape--default {
-      object-fit: fill;
-    }
+    padding: clamp(24px, 6.6667vw, 32px) clamp(18px, 4.1667vw, 20px) clamp(28px, 7.5vw, 36px)
+      clamp(24px, 6.6667vw, 32px);
 
     &__rating img {
-      width: 21px;
+      width: clamp(21px, 5vw, 24px);
     }
 
     &__quote {
-      margin-top: 18px;
-      font-size: 16px;
-      line-height: 1.35;
+      margin-top: clamp(18px, 5vw, 24px);
+      font-size: clamp(16px, 4.1667vw, 20px);
+      line-height: 1.4;
     }
 
     &__author {
@@ -141,12 +126,44 @@
     }
 
     &__avatar {
-      width: 44px;
+      width: clamp(44px, 10vw, 48px);
     }
 
     &__person {
-      font-size: 14px;
+      font-size: clamp(14px, 3.3333vw, 16px);
       white-space: normal;
+    }
+  }
+}
+
+@media (width <= 359px) {
+  .review-card {
+    padding: 22px 20px 26px;
+
+    &__shape--active {
+      height: 100%;
+    }
+
+    &__rating img {
+      width: 20px;
+    }
+
+    &__quote {
+      margin-top: 14px;
+      font-size: 15px;
+    }
+
+    &__author {
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    &__avatar {
+      width: 40px;
+    }
+
+    &__person {
+      font-size: 13px;
     }
   }
 }

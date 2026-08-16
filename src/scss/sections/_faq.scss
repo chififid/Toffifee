@@ -170,6 +170,8 @@
       top: 24px;
       left: 12px;
       transform: rotate(89deg) scaleY(-1);
+
+      @include decorative-background.soft-edge-inner-mask(to right, 5%, 94%);
     }
 
     &--lower {
@@ -177,7 +179,7 @@
       left: 18px;
       transform: rotate(-91deg);
 
-      @include decorative-background.soft-edge-mask(to right, 19%, 94%);
+      @include decorative-background.soft-edge-inner-mask(to right, 19%, 94%);
     }
   }
 
@@ -370,7 +372,124 @@
   .faq-contacts-foliage,
   .faq-footer-foliage,
   .faq__foliage {
-    display: none;
+    opacity: calc(var(--foliage-opacity-default) * 0.82);
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  .faq-contacts-foliage {
+    mask-image:
+      linear-gradient(to right, #000 0, #000 54px, transparent 150px, transparent 100%),
+      linear-gradient(
+        to bottom,
+        transparent 0,
+        #000 70px,
+        #000 calc(100% - 180px),
+        transparent 100%
+      );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-composite: intersect;
+
+    &__segment,
+    &__segment--upper,
+    &__segment--lower,
+    &__segment--bridge,
+    &__segment--turn-in {
+      left: -325px;
+      width: 450px;
+      height: 460px;
+
+      @include decorative-background.soft-edge-mask(to bottom, 6%, 94%);
+    }
+
+    &__segment img {
+      left: 325px;
+      width: 450px;
+      height: auto;
+    }
+
+    &__segment--upper {
+      top: -50px;
+    }
+
+    &__segment--lower {
+      top: 290px;
+    }
+
+    &__segment--bridge {
+      top: 630px;
+    }
+
+    &__segment--turn-in {
+      top: 970px;
+    }
+  }
+
+  .faq-footer-foliage {
+    mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 110px), transparent 100%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+
+    &__chain {
+      bottom: 50px;
+      left: -90px;
+      width: 430px;
+      height: 190px;
+      transform: rotate(29deg) scale(1.04);
+
+      @include decorative-background.corner-entry-mask(to right, 94%, 100%, 35%);
+    }
+
+    &__segment {
+      top: 0;
+      width: 233px;
+      height: 190px;
+      transform: none;
+
+      &--approach {
+        left: 0;
+
+        @include decorative-background.fade-out-mask(to right, 85%);
+      }
+
+      &--exit {
+        left: 197px;
+        transform: scaleX(-1);
+
+        @include decorative-background.fade-out-mask(to right, 85%);
+      }
+    }
+  }
+
+  .faq {
+    &__foliage {
+      &--right {
+        top: 35px;
+        right: -215px;
+        width: 380px;
+        height: 820px;
+
+        @include decorative-background.soft-edge-mask(to bottom, 5%, 95%);
+      }
+    }
+
+    &__foliage-segment {
+      width: 360px;
+      height: 293px;
+
+      &--upper {
+        top: 0;
+        left: 0;
+      }
+
+      &--lower {
+        top: 270px;
+        left: 10px;
+      }
+    }
   }
 
   .faq {

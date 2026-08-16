@@ -17,11 +17,27 @@
 
   &__heading {
     position: relative;
+    display: flex;
+    justify-content: center;
+    isolation: isolate;
     width: 100%;
     max-width: 900px;
   }
 
+  &__title-composition {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  &__title-frame {
+    position: relative;
+    width: 100%;
+  }
+
   &__title {
+    position: relative;
+    z-index: 1;
     color: var(--color-primary);
     font-family: var(--font-display);
     font-size: var(--type-display);
@@ -30,7 +46,7 @@
     text-align: center;
   }
 
-  &__star,
+  &__stars,
   &__lines,
   &__arrow {
     position: absolute;
@@ -84,23 +100,29 @@
     animation-play-state: running;
   }
 
-  &__star {
-    &--purple {
-      top: -22px;
-      left: 9.5%;
-      width: 38px;
-    }
+  &__stars {
+    z-index: 0;
+    top: -22px;
+    left: -18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-    &--blue {
-      top: -21px;
-      left: 16%;
-      width: 60px;
-    }
+  &__star--purple {
+    width: 38px;
+  }
+
+  &__star--blue {
+    width: 60px;
+    margin-top: 1px;
   }
 
   &__lines {
-    right: 8px;
+    z-index: 2;
+    right: auto;
     bottom: -66px;
+    left: calc(100% - 10px);
     width: 92px;
   }
 
@@ -109,7 +131,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    margin-top: 63px;
+    margin-top: 28px;
   }
 
   &__cta-wrap {
@@ -163,11 +185,15 @@
     color: var(--color-primary);
     font-size: var(--type-body-lg);
     line-height: 1.22;
+
+    span {
+      display: block;
+    }
   }
 
   &__arrow {
-    top: calc(100% + 22px);
-    left: calc(50% - 18px);
+    top: calc(100% + 26px);
+    left: calc(50% - 15px);
     width: 54px;
   }
 
@@ -178,7 +204,7 @@
     color: #f5feff;
     font-size: var(--type-body-lg);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.4;
     white-space: nowrap;
 
     span {
@@ -198,7 +224,7 @@
 @media (width <= 900px) {
   .hero {
     &__inner {
-      padding-top: 120px;
+      padding-top: calc(var(--space-section-edge) * 2);
     }
 
     &__footer {
@@ -207,9 +233,54 @@
     }
 
     &__lines {
-      right: 2%;
-      bottom: -54px;
+      bottom: -70px;
       width: 76px;
+    }
+
+    &__arrow {
+      top: calc(100% + 17px);
+      left: calc(50% - 15.5px);
+    }
+
+    &__ticket {
+      left: calc(50% - 5px);
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .hero {
+    &__title-mark {
+      position: relative;
+      display: inline-block;
+    }
+
+    &__stars {
+      inset: 100% auto auto -40px;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    &__actions {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__star--purple {
+      width: 30px;
+    }
+
+    &__star--blue {
+      width: 45px;
+      margin-top: 2px;
+    }
+
+    &__lines {
+      inset: auto auto calc(100% + 9px) 50%;
+      width: clamp(36px, 6vw, 45px);
+      max-width: none;
+      transform: translateX(20%) translateY(75%) rotate(-90deg);
+      transform-origin: center;
     }
   }
 }
@@ -217,56 +288,64 @@
 @media (width <= 600px) {
   .hero {
     &__inner {
-      padding-top: 96px;
+      display: grid;
+      justify-items: center;
+    }
+
+    &__stars {
+      inset: 100% auto auto 15px;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    &__content,
+    &__actions,
+    &__cta-wrap,
+    &__footer {
+      display: contents;
+    }
+
+    &__students {
+      grid-row: 1;
+      margin-bottom: 16px;
+    }
+
+    &__heading {
+      grid-row: 2;
     }
 
     &__title {
+      font-size: clamp(36px, 10.8vw, 46px);
       line-height: 0.98;
     }
 
-    &__star--purple {
-      top: -20px;
-      left: 2%;
-      width: 30px;
-    }
-
-    &__star--blue {
-      top: -18px;
-      left: 11%;
-      width: 45px;
-    }
-
-    &__lines {
-      right: -4px;
-      bottom: -45px;
-      width: 58px;
-    }
-
     &__actions {
-      width: 100%;
-      max-width: 360px;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 45px;
-    }
-
-    &__cta-wrap,
-    &__actions .button {
-      width: 100%;
+      margin-top: 0;
     }
 
     &__actions .button {
+      position: relative;
+      z-index: 2;
+      width: min(190px, 100%);
       min-width: 0;
     }
 
-    &__footer {
-      flex-direction: column;
-      margin-top: 72px;
-      padding-left: 0;
+    &__actions > .button--secondary {
+      grid-row: 5;
+      margin-top: 14px;
+    }
+
+    &__cta-wrap .button--primary {
+      grid-row: 4;
+      margin-top: 20px;
     }
 
     &__students {
       gap: 12px;
+    }
+
+    &__avatars {
+      display: none;
     }
 
     &__avatar {
@@ -275,7 +354,13 @@
     }
 
     &__students-count {
+      display: flex;
+      gap: 0.35em;
       font-size: 17px;
+
+      span {
+        display: inline;
+      }
     }
 
     &__arrow {
@@ -284,11 +369,33 @@
 
     &__ticket {
       position: static;
-      max-width: 260px;
-      margin-top: 30px;
-      font-size: 16px;
+      z-index: 2;
+      grid-row: 3;
+      width: max-content;
+      max-width: 100%;
+      margin-top: 18px;
+      padding-inline: 8px;
+      background: var(--color-primary);
+      font-size: clamp(12px, 3.4vw, 14px);
       text-align: center;
-      white-space: normal;
+      white-space: nowrap;
+
+      br {
+        display: none;
+      }
+
+      span {
+        padding-inline: 0;
+        background: none;
+      }
+    }
+  }
+}
+
+@media (width <= 520px) {
+  .hero {
+    &__stars {
+      display: none;
     }
   }
 }

@@ -23,6 +23,8 @@
     width: 800px;
     transform: rotate(-23.21deg);
     transform-origin: center;
+
+    @include decorative-background.fade-in-mask(to right, 16px);
   }
 
   &__canvas {
@@ -99,6 +101,8 @@
 
 @media (width <= 600px) {
   .site-footer {
+    padding-block: 48px;
+
     &__foliage {
       inset: -200px 0 0;
     }
@@ -110,15 +114,15 @@
     }
 
     &__logo {
-      width: 155px;
+      width: 145px;
     }
 
     &__links {
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
-      margin-top: 38px;
-      font-size: 24px;
+      gap: 4px;
+      margin-top: 30px;
+      font-size: 22px;
       line-height: 1.2;
 
       a {

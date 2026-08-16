@@ -36,6 +36,49 @@
   mask-size: 100% 100%;
 }
 
+@mixin soft-edge-inner-mask(
+  $direction: to right,
+  $fade-in: 10%,
+  $fade-out: 90%,
+  $inner-edge: start,
+  $inner-fade: 16px
+) {
+  @if $inner-edge == start {
+    mask-image:
+      linear-gradient($direction, transparent 0, #000 $fade-in, #000 $fade-out, transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 $inner-fade, #000 100%);
+  } @else {
+    mask-image:
+      linear-gradient($direction, transparent 0, #000 $fade-in, #000 $fade-out, transparent 100%),
+      linear-gradient(to bottom, #000 0, #000 calc(100% - $inner-fade), transparent 100%);
+  }
+
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
+}
+
+@mixin fade-in-inner-mask(
+  $direction: to right,
+  $fade-end: 10%,
+  $inner-edge: start,
+  $inner-fade: 16px
+) {
+  @if $inner-edge == start {
+    mask-image:
+      linear-gradient($direction, transparent 0, #000 $fade-end, #000 100%),
+      linear-gradient(to bottom, transparent 0, #000 $inner-fade, #000 100%);
+  } @else {
+    mask-image:
+      linear-gradient($direction, transparent 0, #000 $fade-end, #000 100%),
+      linear-gradient(to bottom, #000 0, #000 calc(100% - $inner-fade), transparent 100%);
+  }
+
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
+}
+
 @mixin inner-edge-mask($direction: to right, $solid-end: 120px, $fade-end: 320px) {
   mask-image: linear-gradient(
     $direction,

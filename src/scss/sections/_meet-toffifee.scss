@@ -1,6 +1,7 @@
 @use '../decorative-background';
 
 .meet-toffifee {
+  --meet-header-max-width: 1128px;
   --teacher-card-width: 230px;
 
   position: relative;
@@ -17,7 +18,7 @@
     z-index: 3;
     display: flex;
     width: 100%;
-    max-width: 1128px;
+    max-width: var(--meet-header-max-width);
     flex-direction: column;
     align-items: flex-start;
     margin-inline: auto;
@@ -33,12 +34,18 @@
     text-transform: uppercase;
   }
 
+  &__title-composition,
+  &__note-composition {
+    display: contents;
+  }
+
   &__title-stroke {
     position: absolute;
     top: -11px;
     right: 50px;
     width: 331px;
     max-width: none;
+    pointer-events: none;
   }
 
   &__description {
@@ -58,6 +65,8 @@
   }
 
   &__note {
+    position: relative;
+    z-index: 1;
     max-width: 36em;
     margin-top: 20px;
     padding: 12px 20px 15px 56px;
@@ -75,11 +84,16 @@
 
   &__decor-loop {
     position: absolute;
-    right: -49px;
+    z-index: 0;
+    right: max(
+      -49px,
+      calc(28px - max(var(--page-gutter), calc((100vw - var(--meet-header-max-width)) / 2)))
+    );
     bottom: -23px;
     display: block;
     width: 174px;
     max-width: none;
+    pointer-events: none;
   }
 
   &__slider-stage {
@@ -114,6 +128,10 @@
         width: 100.6%;
       }
     }
+
+    &--continuation {
+      display: none;
+    }
   }
 
   &__foliage-image {
@@ -135,24 +153,32 @@
       bottom: 50.1%;
       left: -35%;
       transform: rotate(69deg);
+
+      @include decorative-background.soft-edge-inner-mask(to right, 12%, 88%);
     }
 
     &--left-lower {
       bottom: 12%;
       left: -2.2%;
       transform: rotate(-111deg) scaleY(-1);
+
+      @include decorative-background.soft-edge-inner-mask(to right, 12%, 88%, end);
     }
 
     &--right-upper {
       top: 8.9%;
       left: 4%;
       transform: rotate(95deg) scaleY(-1);
+
+      @include decorative-background.soft-edge-inner-mask(to right, 12%, 88%, end);
     }
 
     &--right-lower {
       top: 51.4%;
       left: -5.2%;
       transform: rotate(-85deg);
+
+      @include decorative-background.soft-edge-inner-mask(to right, 12%, 88%);
     }
   }
 
@@ -395,21 +421,208 @@
 
 @media (width <= 900px) {
   .meet-toffifee {
+    &__title-composition {
+      position: relative;
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+    }
+
     &__title-stroke {
-      right: 0;
-      width: min(36vw, 270px);
+      right: auto;
+      left: calc(100% + 18px);
+      width: min(30vw, 270px);
     }
 
     &__note {
       padding-left: 24px;
     }
 
+    &__decor-loop {
+      width: clamp(150px, 19vw, 174px);
+    }
+
+    &__foliage--left,
+    &__foliage--right {
+      opacity: var(--foliage-opacity-muted);
+
+      img {
+        opacity: 1;
+      }
+    }
+
     &__foliage--left {
-      left: -150px;
+      left: -130px;
     }
 
     &__foliage--right {
-      right: -220px;
+      right: -150px;
+    }
+
+    &__foliage--continuation {
+      top: calc(100% - 90px);
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1400px;
+      opacity: 0.27;
+
+      @include decorative-background.soft-edge-mask(to bottom, 4%, 94%);
+
+      .meet-toffifee__foliage-image {
+        width: clamp(400px, 50vw, 450px);
+        aspect-ratio: 543 / 442;
+
+        @include decorative-background.soft-edge-inner-mask(to right, 5%, 95%);
+
+        img {
+          opacity: 1;
+          mask-image: none;
+        }
+      }
+
+      .meet-toffifee__foliage-image--continuation-1,
+      .meet-toffifee__foliage-image--continuation-3,
+      .meet-toffifee__foliage-image--continuation-5,
+      .meet-toffifee__foliage-image--continuation-7 {
+        left: clamp(-260px, -26vw, -210px);
+        transform: rotate(90deg);
+      }
+
+      .meet-toffifee__foliage-image--continuation-2,
+      .meet-toffifee__foliage-image--continuation-4,
+      .meet-toffifee__foliage-image--continuation-6,
+      .meet-toffifee__foliage-image--continuation-8 {
+        right: clamp(-260px, -26vw, -210px);
+        left: auto;
+        transform: rotate(-90deg);
+      }
+
+      .meet-toffifee__foliage-image--continuation-1 {
+        top: 0;
+      }
+
+      .meet-toffifee__foliage-image--continuation-2 {
+        top: 160px;
+      }
+
+      .meet-toffifee__foliage-image--continuation-3 {
+        top: 320px;
+        transform: rotate(90deg) scaleX(-1);
+      }
+
+      .meet-toffifee__foliage-image--continuation-4 {
+        top: 480px;
+        transform: rotate(-90deg) scaleX(-1);
+      }
+
+      .meet-toffifee__foliage-image--continuation-5 {
+        top: 640px;
+      }
+
+      .meet-toffifee__foliage-image--continuation-6 {
+        top: 800px;
+      }
+
+      .meet-toffifee__foliage-image--continuation-7 {
+        top: 960px;
+        transform: rotate(90deg) scaleX(-1);
+      }
+
+      .meet-toffifee__foliage-image--continuation-8 {
+        top: 1120px;
+        transform: rotate(-90deg) scaleX(-1);
+      }
+    }
+  }
+}
+
+@media (width < 820px) {
+  .meet-toffifee {
+    &__title-stroke,
+    &__decor-loop {
+      display: none;
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .meet-toffifee {
+    &__header {
+      align-items: center;
+      text-align: center;
+    }
+
+    &__title {
+      position: relative;
+      white-space: nowrap;
+
+      &::after {
+        position: absolute;
+        right: 5%;
+        bottom: -11px;
+        left: 5%;
+        height: 3px;
+        background: #721aaa;
+        content: '';
+      }
+    }
+
+    &__title-stroke {
+      display: none;
+    }
+
+    &__description {
+      margin-top: 19px;
+      padding-left: 0;
+      border-left: 0;
+      text-align: center;
+    }
+
+    &__note-composition {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 36em;
+      margin-top: 14px;
+      font-size: var(--type-body-md);
+    }
+
+    &__note {
+      max-width: none;
+      margin-top: 0;
+      padding: 12px;
+      border-radius: 9px;
+      font-size: inherit;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    &__decor-loop {
+      right: -20px;
+      bottom: -54px;
+      width: 120px;
+    }
+
+    &__slider-stage {
+      margin-top: 29px;
+    }
+
+    &__foliage--left,
+    &__foliage--right {
+      width: 330px;
+    }
+
+    &__foliage--left {
+      left: -160px;
+    }
+
+    &__foliage--right {
+      right: -175px;
+    }
+
+    &__foliage--continuation {
+      height: 1500px;
     }
   }
 }
@@ -419,49 +632,19 @@
     --teacher-card-width: min(230px, calc(100vw - 72px));
 
     &__title {
-      line-height: 1.04;
-    }
-
-    &__title-stroke {
-      top: auto;
-      right: -6px;
-      bottom: -10px;
-      width: 42vw;
+      font-size: clamp(31px, 8.3333vw, 40px);
+      line-height: 1.2;
     }
 
     &__description {
-      margin-top: 20px;
-      padding-left: 14px;
+      max-width: 380px;
+      font-size: clamp(12px, 3vw, 14px);
+      line-height: 1.35;
     }
 
-    &__note {
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 18px;
-    }
-
-    &__decor-loop {
-      right: -18px;
-      bottom: -54px;
-      width: 120px;
-    }
-
-    &__slider-stage {
-      margin-top: 38px;
-    }
-
-    &__foliage {
-      opacity: 0.62;
-
-      &--left {
-        left: -185px;
-        width: 360px;
-      }
-
-      &--right {
-        right: -210px;
-        width: 350px;
-      }
+    &__note-composition {
+      width: min(351px, 100%);
+      font-size: 12px;
     }
 
     &__control {

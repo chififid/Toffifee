@@ -23,6 +23,11 @@ export const initHeader = () => {
 
   const setMenuState = (isOpen, { returnFocus = false } = {}) => {
     header.classList.toggle('is-menu-open', isOpen);
+
+    if (isOpen) {
+      header.classList.remove('is-menu-dismissed-by-scroll');
+    }
+
     menuToggle?.setAttribute('aria-expanded', String(isOpen));
     menuToggle?.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
 
@@ -55,6 +60,7 @@ export const initHeader = () => {
   const activateHeader = (currentScrollPosition) => {
     isHeaderActivated = true;
     lastScrollPosition = currentScrollPosition;
+    header.classList.remove('is-menu-dismissed-by-scroll');
     header.classList.add('is-fixed', 'is-scrolled', 'is-activating');
     header.classList.toggle('is-hidden', !isMenuOpen());
     window.requestAnimationFrame(() => header.classList.remove('is-activating'));
@@ -63,12 +69,23 @@ export const initHeader = () => {
   const deactivateHeader = () => {
     isHeaderActivated = false;
     lastScrollPosition = 0;
-    header.classList.remove('is-fixed', 'is-scrolled', 'is-hidden', 'is-activating');
+    header.classList.remove(
+      'is-fixed',
+      'is-scrolled',
+      'is-hidden',
+      'is-activating',
+      'is-menu-dismissed-by-scroll',
+    );
   };
 
   const updateHeaderVisibility = () => {
     const currentScrollPosition = Math.max(window.scrollY, 0);
     const scrollDelta = currentScrollPosition - lastScrollPosition;
+
+    if (mobileHeaderQuery.matches && isMenuOpen() && scrollDelta !== 0) {
+      header.classList.add('is-menu-dismissed-by-scroll');
+      setMenuState(false);
+    }
 
     updateActiveNavigation(currentScrollPosition);
 

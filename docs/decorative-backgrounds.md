@@ -4,8 +4,8 @@
 
 ## Источники и слои
 
-- Для составных цепочек использовать только `src/assets/images/site-foliage/foliage-blue.png`.
-- `src/assets/images/footer/footer-fern.png` — самостоятельный экспорт футера. Не использовать его как сегмент цепочки и не добавлять CSS-opacity.
+- Для составных цепочек использовать только `src/assets/images/site-foliage/foliage-blue.webp`.
+- `src/assets/images/footer/footer-fern.webp` — самостоятельный оптимизированный экспорт футера. Не использовать его как сегмент цепочки и не добавлять CSS-opacity.
 - Общие свойства слоя, crop-рамки, естественного изображения и масок брать из `src/scss/_decorative-background.scss`.
 - Фон, сетка и контент должны оставаться независимыми слоями. Декор не принимает pointer events и не создаёт доступного содержимого.
 

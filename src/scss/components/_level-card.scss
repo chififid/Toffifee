@@ -163,3 +163,33 @@
     outline-offset: 5px;
   }
 }
+
+@media (width <= 600px) {
+  .level-card {
+    align-content: center;
+    padding-top: 0;
+
+    &__level {
+      font-size: clamp(45px, 10.5vw, 50px);
+    }
+
+    &__name {
+      font-size: clamp(17px, 4.2vw, 20px);
+    }
+
+    &__hours {
+      font-size: clamp(16px, 3.75vw, 18px);
+    }
+
+    &__shape--selected {
+      top: 0;
+      left: 0;
+      width: calc(100% + 16px);
+      height: calc(100% + 16px);
+    }
+
+    &__badge {
+      right: -4.5%;
+    }
+  }
+}
